@@ -1,0 +1,32 @@
+{
+  "name": "hardcoders",
+  "version": "1.0.0",
+  "description": "codeoctober hackathon submission",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biley02/Hardcoders.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biley02/Hardcoders/issues"
+  },
+  "homepage": "https://github.com/biley02/Hardcoders#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14"
+  }
+}
