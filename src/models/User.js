@@ -48,10 +48,22 @@ const userSchema = new mongoose.Schema({
       ref: "Tracks",
     },
   ],
+  questions: [
+    {
+      type: ObjectId,
+      ref: "Question",
+    },
+  ],
   notes: [
     {
       type: ObjectId,
       ref: "Note",
+    },
+  ],
+  likes: [
+    {
+      type: ObjectId,
+      ref: "Question",
     },
   ],
   tokens: [

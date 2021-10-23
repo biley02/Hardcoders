@@ -235,5 +235,18 @@ router.post("/notes", authorization, async (req, res) => {
   }
 });
 
+router.get("/friends", authorization, async (req, res) => {
+  try {
+    let user = req.user;
+    const founduser = await User.find({ email: user.email }).populate(
+      "friends"
+    );
+    res.send(founduser.friends);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/");
+  }
+});
+
 //Export
 module.exports = router;
