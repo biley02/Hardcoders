@@ -58,10 +58,12 @@ app.use((req, res, next) => {
 
 //Routes===========================================
 var userRoutes = require("../routes/user");
+var resourceRoutes = require("../routes/resource");
 var discussionRoutes = require("../routes/discussion");
 
 app.use("/user", userRoutes);
 app.use("/forum", discussionRoutes);
+app.use("/resource", resourceRoutes);
 
 app.get("/", authorization, (req, res) => {
   res.render("index");
