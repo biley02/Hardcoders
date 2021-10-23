@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const Tracks = require("../src/models/Tracks");
+const Note = require("../src/models/Note");
 
 router.get("/login", (req, res) => {
   res.render("login");
@@ -46,6 +47,7 @@ router.post("/signup", async (req, res) => {
         name: req.body.name,
         password: hashedPassword,
         active: true,
+        handle: req.body.handle,
       });
 
       const newuser = await newUser.save();
@@ -108,8 +110,8 @@ router.get("/logout", function (req, res) {
 router.get("/tracks", authorization, async (req, res) => {
   try {
     let user = req.user;
-    const tracks = await User.find({ email: user.email }).populate("tracks");
-    console.log(tracks);
+    const founduser = await User.find({ email: user.email }).populate("tracks");
+    res.send(founduser.tracks);
   } catch (err) {
     console.log(err);
     res.redirect("/");
@@ -145,7 +147,10 @@ router.get("/profile", authorization, async (req, res) => {
     const finduser = await User.find({ active: true }, null, {
       sort: { name: 1 },
     });
-    res.send(req.user);
+    let user = await User.findById(req.user.userId);
+    await user.populate("tracks");
+    await user.populate("notes");
+    res.send(user);
     // res.render("profile", {
     //   user: req.user,
     //   found: finduser,
@@ -154,6 +159,79 @@ router.get("/profile", authorization, async (req, res) => {
     console.error("Error getting the profile", error);
     // req.flash("error", "Error in getting the profile");
     // res.redirect("/");
+  }
+});
+
+router.get("/public-profile/:handle", async (req, res) => {
+  try {
+    // const token = req.cookies.authorization;
+    const finduser = await User.find({ active: true }, null, {
+      sort: { name: 1 },
+    });
+    // const userBlog = await Blog.find();
+    // req.dbUser = await (await User.findOne({ dscHandle: req.params.handle }))
+    const token = req.cookies.authorization;
+    let user;
+    if (token) {
+      const decodedData = await jwt.verify(token, process.env.JWT_SECRET);
+      if (decodedData) user = await User.findById(decodedData.userId);
+    }
+    let searchedUser = await User.findOne({
+      handle: req.params.handle,
+    });
+    console.log(searchedUser);
+    await searchedUser.populate("tracks");
+    await searchedUser.populate("skills");
+    await searchedUser.populate("friends");
+    if (searchedUser) {
+      //   res.render("public-profile", {
+      //     searchedUser,
+      //     user,
+      //     found: finduser,
+      //   });
+      res.send(searchedUser);
+    } else {
+      //   res.render("404-page");
+      console.log("error");
+    }
+  } catch (error) {
+    console.error(error);
+    // res.render("404-page");
+  }
+});
+
+router.get("/notes", authorization, async (req, res) => {
+  try {
+    let user = req.user;
+    const founduser = await User.find({ email: user.email }).populate("notes");
+    res.send(founduser.notes);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/");
+  }
+});
+
+router.post("/notes", authorization, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.userId);
+    let newnote = req.body;
+    let saved = await new Note({
+      title: newnote.title,
+      author: req.user.userId,
+      description: newnote.description,
+      url: newnote.url,
+    }).save();
+    if (user.notes) {
+      user.notes.push(saved);
+    } else {
+      user.notes = [saved];
+    }
+    console.log(saved);
+    console.log(user);
+    await user.save();
+    res.redirect("/user/profile");
+  } catch (err) {
+    console.log(err);
   }
 });
 

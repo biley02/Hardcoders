@@ -4,18 +4,19 @@ const { ObjectId } = mongoose.Schema.Types;
 const noteSchema = new mongoose.Schema({
   title: {
     type: String,
-    required,
+    required: true,
   },
   description: {
     type: String,
   },
-  contentURL: {
+  url: {
     type: String,
+    required: true,
   },
   author: {
     type: ObjectId,
     ref: "User",
-    required,
+    required: true,
   },
 });
 module.exports = mongoose.model("Note", noteSchema);
