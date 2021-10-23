@@ -153,11 +153,10 @@ router.get("/profile", authorization, async (req, res) => {
     let user = await User.findById(req.user.userId);
     await user.populate("tracks");
     await user.populate("notes");
-    res.send(user);
-    // res.render("profile", {
-    //   user: req.user,
-    //   found: finduser,
-    // });
+    res.render("profile", {
+      user: req.user,
+      found: finduser,
+    });
   } catch (error) {
     console.error("Error getting the profile", error);
     // req.flash("error", "Error in getting the profile");

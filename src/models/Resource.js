@@ -9,6 +9,9 @@ const resourceSchema = new mongoose.Schema({
   body: {
     type: String,
   },
+  img: {
+    type: String,
+  },
   likes: {
     type: Number,
     default: 0,
