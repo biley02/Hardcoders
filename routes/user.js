@@ -112,7 +112,9 @@ router.get("/tracks", authorization, async (req, res) => {
     let user = req.user;
     const founduser = await User.find({ email: user.email }).populate("tracks");
     console.log(founduser);
-    res.render("track_page");
+    res.render("track_page", {
+      tracks: founduser.tracks,
+    });
   } catch (err) {
     console.log(err);
     res.redirect("/");
@@ -204,8 +206,13 @@ router.get("/public-profile/:handle", async (req, res) => {
 router.get("/notes", authorization, async (req, res) => {
   try {
     let user = req.user;
-    const founduser = await User.find({ email: user.email }).populate("notes");
-    res.render("notes");
+    const founduser = await User.findOne({ email: user.email }).populate(
+      "notes"
+    );
+    // console.log(founduser);
+    res.render("notes", {
+      user: founduser,
+    });
   } catch (err) {
     console.log(err);
     res.redirect("/");
