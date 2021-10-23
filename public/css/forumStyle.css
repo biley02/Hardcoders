@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+}
+
+/* Ask your button question */
+
+#ask-btn {
+    padding: 0.8rem;
+    margin-left: 7rem;
+    text-align: center;
+    background-color: #746AF9;
+    color: white;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+#ask-btn:hover {
+    padding: 0.6rem;
+}
+
+/* Query list container*/
+
+.query {
+    position: relative;
+    font-family: 'Nunito', sans-serif;
+    width: 60vw;
+}
+
+/* List elements of the query container */
+li {
+    width: 60vw;
+    padding: 3rem;
+    margin-left: 5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+li:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+li:nth-of-type(1) {
+    margin-top: 2rem;
+}
+a {
+    text-decoration: none;
+}
+
+/* Query top */
+.query-top {
+    font-weight:700;
+}
+.query-top span:nth-of-type(1) {
+    margin-right: 5rem;
+} 
+.query-top span:nth-of-type(3) {
+    position: absolute;
+    right: 7rem;
+    top: 1.2rem;
+}
+/* Query vote buttons */
+.query-votes button {
+    margin: 0.5rem;
+    background-color: white;
+    border: none;
+}
+
+/* Query tags */
+.query-tags {
+    font-weight: 700;
+    word-spacing: 0.5rem;
+    text-transform: uppercase;
+}
+.query-tags, .query-ans {
+    display: inline-block;
+}
+
+/* Query answer*/
+.query-ans {
+    position: absolute;
+    bottom: 0rem;
+    right: 2rem;
+}
+#answer-btn {
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1rem;
+    position: absolute;
+    right: 5rem;
+    bottom: 2rem;
+}
+#answer-btn:hover {
+    padding: 0.6rem 1.6rem 0.6rem 1.6rem;
+}
+
+/* Search box */
+
+.search-div {
+    position: relative;
+    padding: 1rem;
+}
+
+#search-query {
+    position: absolute;
+    padding: 0.3rem;
+    padding-left: 1rem;
+    right: 10rem;
+    width: 20rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 1px solid grey;
+}
+#search-icon {
+    position: absolute;
+    top: 0.8rem;
+    right: 11rem;
+}
+#search-img {
+    width: 80%;
+    height: auto;
+    margin-left: 10rem;
+}
