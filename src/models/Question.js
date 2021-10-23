@@ -11,6 +11,7 @@ const questionSchema = new mongoose.Schema({
   },
   likes: {
     type: Number,
+    default: 0,
   },
   slug: {
     type: String,

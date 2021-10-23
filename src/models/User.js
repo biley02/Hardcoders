@@ -66,6 +66,12 @@ const userSchema = new mongoose.Schema({
       ref: "Question",
     },
   ],
+  resourcelikes: [
+    {
+      type: ObjectId,
+      ref: "Resource",
+    },
+  ],
   tokens: [
     {
       token: {
