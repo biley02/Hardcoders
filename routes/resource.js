@@ -23,7 +23,9 @@ router.get("/", async (req, res) => {
         likes: -1,
       })
       .populate("author");
-    res.send(resources);
+    res.render("resource_new", {
+      resources: resources,
+    });
   } catch (err) {
     console.error(err);
     req.send("Something went wrong. Try again");
