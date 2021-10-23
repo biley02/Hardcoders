@@ -1,0 +1,132 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+  }
+  
+  body{
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .body_container{
+    margin: 20px 20px;
+    padding: 8px;
+    background-color: rgb(232, 244, 255);
+    border-radius: 10px;
+  }
+  .f_track h2{
+    /* padding-top: 20px; */
+    padding-left: 20px;
+  }
+  .first_track{
+    margin: 3px 30px;
+  }
+  .my_track{
+    display: flex;
+    overflow-x: auto;
+  }
+  .my_track .container{
+    display: flex;
+    display: row;
+  }
+  
+  
+  .card{
+    position: relative;
+    width: 300px;
+    height: 218px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.05),
+                inset -5px -5px 5px rgba(255,255,255,0.5),
+                5px 5px 5px rgba(0, 0, 0, 0.05),
+                -5px -5px 5px rgba(255,255,255,0.5);
+    border-radius: 15px;
+    margin: 10px;            
+  }
+  
+  .card .box{
+    position: absolute;
+    top: 14px;
+    left:14px;
+    right: 14px;
+    bottom: 14px;
+    background: linear-gradient(45deg,#E56AF9,#FFE896);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+  }
+  
+  .card:hover .box {
+    transform: translateY(-5px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    background: linear-gradient(45deg,#746AF9,#D1CEFC);
+  }
+  .card .box .content{
+    padding: 20px;
+    text-align: center;
+  }
+  .card .box .content h2{
+    position: absolute;
+    top: -80px;
+    right: 30px;
+    font-size: 5em;
+    font-weight: normal;
+    color: rgba(27, 27, 27, 0.7);
+    transition: 0.5s;
+  }
+  .card .box .content h2{
+    color: rgba(23, 25, 27, 0.272);
+  }
+  .card .box .content h3{
+    position: absolute;
+    top: 26px;
+    left: 20px;
+    font-weight: normal;
+    font-size: 2.5em;
+    color:rgb(47, 49, 62);
+    z-index:1;
+    transition: 0.5s;
+  }
+  
+  .card .box .content p{
+    position: absolute;
+    top: 106px;
+    left: 20px;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: rgb(44, 44, 113);
+    z-index: 1;
+    transition: 0.5s;
+  }
+  
+  .card .box .content a{
+    position: absolute;
+    top: 130px;
+    left: 18px;
+    display: inline-block;
+    padding: 8px 15px;
+    background: rgb(204, 204, 253);
+    /* background: rgb(80, 80, 211); */
+    margin-top: 15px;
+    font-size: 12px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: 0.2s;
+  }
+  
+  .card:hover .box .content a{
+    background: rgb(80, 80, 211);
+    /* background: rgb(204, 204, 253); */
+    color: white;
+  }
+  
+  hr{
+      border: 0;
+      height: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }

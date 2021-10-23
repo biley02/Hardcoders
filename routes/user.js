@@ -112,7 +112,7 @@ router.get("/tracks", authorization, async (req, res) => {
     let user = req.user;
     const founduser = await User.find({ email: user.email }).populate("tracks");
     console.log(founduser);
-    res.send(founduser);
+    res.render("track_page");
   } catch (err) {
     console.log(err);
     res.redirect("/");
@@ -205,7 +205,7 @@ router.get("/notes", authorization, async (req, res) => {
   try {
     let user = req.user;
     const founduser = await User.find({ email: user.email }).populate("notes");
-    res.send(founduser.notes);
+    res.render("notes");
   } catch (err) {
     console.log(err);
     res.redirect("/");
