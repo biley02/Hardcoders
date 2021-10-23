@@ -64,20 +64,14 @@
     <div class="row">
         <% resources.forEach(function(resource){%>
         <div class="col-4">
-            <div class="container-2-column">
-                <div class="cont-3">
-                  
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%=resource.title%></h5>
+                  <p class="card-text"><%=resource.body.substring(0, 20)%>...</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-                <div class="cont-4">
-                    <div class="cont-5">
-                     <h3><%= resource.title %></h3>
-                    </div>
-                    <div class="cont-6">
-                        <h3><%=resource.category%></h3>
-                        <input type="submit" id="signIn" class="btn"  value="Continue">
-                    </div>
-                </div>
-            </div>
+              </div>
         </div>
         <%})%>
     </div>
