@@ -68,7 +68,10 @@ app.use("/resource", resourceRoutes);
 app.get("/", authorization, (req, res) => {
   res.render("index");
 });
-
+app.get("/test", (req, res) => {
+  res.render("Resource");
+});
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
 });
+ 
