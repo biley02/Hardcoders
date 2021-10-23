@@ -40,7 +40,7 @@ router.post("/create", authorization, async (req, res) => {
       return;
     }
     const resource = req.body;
-    // console.log(blog)
+
     if (!resource) {
       req.send("Something went wrong");
     }
@@ -135,4 +135,29 @@ router.post("/comment/:id", authorization, async (req, res) => {
   }
 });
 
+router.get("/like/:resource_id", authorization, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.userId);
+    let likesArr = user.resourcelikes || [];
+    let resource = await Resource.findById(req.params.resource_id);
+    // console.log(user);
+    console.log(resource._id);
+
+    if (likesArr.includes(resource._id)) {
+      likesArr.remove(resource._id);
+      resource.likes = resource.likes - 1;
+    } else {
+      likesArr.push(resource._id);
+      resource.likes = resource.likes + 1;
+    }
+    user.resourcelikes = likesArr;
+    await resource.save();
+    await user.save();
+    console.log(resource);
+    res.redirect(req.get("referer"));
+  } catch (error) {
+    console.log(error);
+    res.redirect("/resource");
+  }
+});
 module.exports = router;

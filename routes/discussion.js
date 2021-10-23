@@ -32,22 +32,23 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/appreciate/:question_id", authorization, async (req, res) => {
+router.get("/appreciate/:question_id", authorization, async (req, res) => {
   try {
     let user = await User.findById(req.user.userId);
     let likesArr = user.likes || [];
     let question = await Question.findById(req.params.question_id);
-    if (likesArr.includes(req.params.question_id)) {
-      likesArr.remove(req.params.question_id);
+    if (likesArr.includes(question._id)) {
+      likesArr.remove(question._id);
       question.likes = question.likes - 1;
     } else {
-      likesArr.push(req.params.question_id);
+      likesArr.push(question._id);
       question.likes = question.likes + 1;
     }
     user.likes = likesArr;
     await question.save();
     await user.save();
-    // console.log(likesArr);
+    console.log(likesArr);
+    console.log(question);
     res.redirect(req.get("referer"));
   } catch (error) {
     console.log(error);
