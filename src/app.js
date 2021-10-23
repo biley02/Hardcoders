@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const session = require("express-session");
+const authorization = require("./middleware/auth");
 const app = express();
 app.use(express.static("public"));
 
@@ -27,7 +28,6 @@ app.set("view engine", "ejs");
 app.set("jwtTokenSecret", process.env.JWT_SECRET);
 
 require("./db/conn");
-const User = require("./module/User");
 const { Console } = require("console");
 
 //body parser
@@ -57,55 +57,14 @@ app.use((req, res, next) => {
 });
 
 //Routes===========================================
-app.get("/", (req, res) => {
+var userRoutes = require("../routes/user");
+
+app.use("/user", userRoutes);
+
+app.get("/", authorization, (req, res) => {
   res.render("index");
 });
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-app.get("/signup", (req, res) => {
-  res.render("signup");
-});
 
-app.post("/signup", async (req, res) => {
-  try {
-    const password = req.body.password;
-    const cpassword = req.body.confirmpassword;
-    if (password == cpassword) {
-      const newUser = new User({
-        email: req.body.email,
-        name: req.body.name,
-        password: req.body.password,
-        confirmpassword: req.body.confirmpassword,
-      });
-
-      const newuser = await newUser.save();
-
-      res.status(201).redirect("/");
-    } else {
-      res.send("password not matching");
-    }
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
-
-app.post("/login", async (req, res) => {
-  try {
-    const email = req.body.email;
-    const password = req.body.password;
-    const useremail = await User.findOne({ email: email });
-    if (!useremail) {
-      res.send("User with email doesnt exist");
-    } else if (useremail.password === password) {
-      res.status(201).redirect("/");
-    } else {
-      res.send("invalid datas");
-    }
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
 });

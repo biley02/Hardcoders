@@ -14,10 +14,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  confirmpassword: {
+  handle: {
     type: String,
-    required: true,
+    unique: true,
   },
+  active: Boolean,
   tokens: [
     {
       token: {
