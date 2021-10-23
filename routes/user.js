@@ -111,7 +111,8 @@ router.get("/tracks", authorization, async (req, res) => {
   try {
     let user = req.user;
     const founduser = await User.find({ email: user.email }).populate("tracks");
-    res.send(founduser.tracks);
+    console.log(founduser);
+    res.send(founduser);
   } catch (err) {
     console.log(err);
     res.redirect("/");
