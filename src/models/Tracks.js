@@ -4,17 +4,28 @@ const { ObjectId } = mongoose.Schema.Types;
 const tracksSchema = new mongoose.Schema({
   title: {
     type: String,
-    required,
+    required: true,
   },
   author: {
     type: ObjectId,
     ref: "User",
-    required,
+    required: true,
   },
-  track: [
+  tracks: [
     {
-      type: ObjectId,
-      ref: "Track",
+      title: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+      },
+      resource: [
+        {
+          name: String,
+          url: String,
+        },
+      ],
     },
   ],
   visibility: {

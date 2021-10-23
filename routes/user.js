@@ -8,6 +8,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const Tracks = require("../src/models/Tracks");
 
 router.get("/login", (req, res) => {
   res.render("login");
@@ -39,6 +40,7 @@ router.post("/signup", async (req, res) => {
     }
     if (password == cpassword) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      console.log(hashedPassword);
       const newUser = new User({
         email: req.body.email,
         name: req.body.name,
@@ -58,6 +60,7 @@ router.post("/signup", async (req, res) => {
       console.log("password not matching");
     }
   } catch (error) {
+    console.log(error);
     res.status(400).send(error);
   }
 });
@@ -100,6 +103,58 @@ router.get("/logout", function (req, res) {
   res.clearCookie("authorization");
   console.log("You are successfully logged out");
   res.redirect("/");
+});
+
+router.get("/tracks", authorization, async (req, res) => {
+  try {
+    let user = req.user;
+    const tracks = await User.find({ email: user.email }).populate("tracks");
+    console.log(tracks);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/");
+  }
+});
+
+router.post("/tracks", authorization, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.userId);
+    let newtrack = req.body;
+    let saved = await new Tracks({
+      title: newtrack.title,
+      author: req.user.userId,
+      tracks: newtrack.tracks,
+      visibility: newtrack.visibility,
+    }).save();
+    if (user.tracks) {
+      user.tracks.push(saved);
+    } else {
+      user.tracks = [saved];
+    }
+    console.log(saved);
+    console.log(user);
+    await user.save();
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/profile", authorization, async (req, res) => {
+  try {
+    const finduser = await User.find({ active: true }, null, {
+      sort: { name: 1 },
+    });
+    res.send(req.user);
+    // res.render("profile", {
+    //   user: req.user,
+    //   found: finduser,
+    // });
+  } catch (error) {
+    console.error("Error getting the profile", error);
+    // req.flash("error", "Error in getting the profile");
+    // res.redirect("/");
+  }
 });
 
 //Export

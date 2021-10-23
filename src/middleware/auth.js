@@ -3,9 +3,9 @@ var User = require("../models/User");
 
 module.exports = async (req, res, next) => {
   try {
-    // console.log('authorization: ', req.cookies);
+    // console.log("authorization: ", req.cookies);
     const token = req.cookies.authorization;
-    // console.log(token);\
+    // console.log(token);
     if (!token) {
       throw new Error("User is not logged in");
     }
@@ -16,6 +16,7 @@ module.exports = async (req, res, next) => {
       } else {
         req.user = user;
         req.dbUser = await User.findById(user.userId);
+        // console.log(token);
         next();
       }
       // console.log(req.user);
