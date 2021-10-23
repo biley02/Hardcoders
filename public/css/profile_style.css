@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+  }
+  
+main{
+    min-height: 100vh;
+    background-color: #e1dffd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.container{
+    min-height: 80vh;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.left{
+    margin: 10px;
+    padding: 20px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.left .user{
+    flex:2;
+}
+.left .badges{
+    flex:1;
+}
+#profile_img{
+    height:200px;
+    width:200px;
+    border-radius: 8px;
+    border: 3px solid #746AF9; 
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    flex: 5.5;
+    margin: 10px;
+}
+.right .right_up{
+    flex:1;
+}
+.right .right_down{
+    flex:1.7;
+}
+.main_points{
+    font-weight: normal;
+    font-size: 26px;
+}
+.sub_points{
+    margin: 2px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+hr{
+    border: 0;
+    height: 0;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.fa-medal{
+    color: #746AF9;
+    height: 10px;
+    width: 10px;
+    margin: 4px;
+}
+
+.personal{
+    font-size: 20px; 
+    color: #746AF9; 
+    margin: 18px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5FF;
+    margin: 5px 0px;
+}
+
+a{
+    padding: 8px 12px;
+    background: rgb(255, 255, 255);
+    font-size: 12px;
+    border-radius: 3px;
+    color: #4337E3;
+    text-decoration: none;
+    font-weight: 400;
+    transition: 0.2s;
+  }
+ .edit_profile{
+     padding: 6px 12px;
+     background-color: #ffffff;
+ } 
