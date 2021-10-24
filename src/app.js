@@ -70,9 +70,9 @@ app.get("/", (req, res) => {
   res.render("homePage");
 });
 
-// app.get("/tracks-form", (req, res) => {
-//   res.render("index");
-// });
+app.get("/tracks-form", (req, res) => {
+  res.render("ask");
+});
 
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
