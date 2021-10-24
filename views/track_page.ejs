@@ -16,7 +16,7 @@
    <div class="body_container">
     <div class="f_track">
         <h2>My Tracks</h2>
-    <div class="first_track">
+    <!-- <div class="first_track">
         <div class="my_track">
             <div class="container">
                 <div class="card">
@@ -32,60 +32,71 @@
                  
             </div>
              </div>
-    </div>
+    </div> -->
     </div>
     <hr>
-    <div class="f_track">
-        <h2>Public Tracks</h2>
-    <div class="first_track">
-        <div class="my_track">
-            <div class="container">
-                <div class="card">
-                       <div class="box">
-                           <div class="content">
-                               <h2>01</h2>
-                               <h3>Array</h3>
-                               <p>22 resources</p>
-                               <a href="#">Get Started</a>
-                           </div>
-                       </div>
-                 </div>
-                 <div class="card">
-                     <div class="box">
-                         <div class="content">
-                             <h2>01</h2>
-                             <h3>Array</h3>
-                             <p>22 resources</p>
-                             <a href="#">Get Started</a>
+    <% tracks.forEach(function(track){%>
+        <div class="f_track">
+            <h2><%=track.title%></h2>
+        <div class="first_track">
+            <div class="my_track">
+                <div class="container">
+                    <% for(var i=0; i < track.tracktitle.length; i++) { %>
+                        <div class="card">
+                            <div class="box">
+                                <div class="content">
+                                    <h2><%=i%></h2>
+                                    <h3><%=track.tracktitle[i]%></h3>
+                                    <p><%=track.trackdescription[i]%></p>
+
+                                    <a  onclick="fun(`<%=track.trackresource[i]%>`)" > Get Started</a>
+                                </div>
+                            </div>
+                      </div>
+                    <%}%>
+                    
+                     <!-- <div class="card">
+                         <div class="box">
+                             <div class="content">
+                                 <h2>01</h2>
+                                 <h3>Array</h3>
+                                 <p>22 resources</p>
+                                 <a href="#">Get Started</a>
+                             </div>
                          </div>
-                     </div>
-               </div>
-               <div class="card">
-                       <div class="box">
-                           <div class="content">
-                               <h2>01</h2>
-                               <h3>Array</h3>
-                               <p>22 resources</p>
-                               <a href="#">Get Started</a>
+                   </div> -->
+                   <!-- <div class="card">
+                           <div class="box">
+                               <div class="content">
+                                   <h2>01</h2>
+                                   <h3>Array</h3>
+                                   <p>22 resources</p>
+                                   <a href="#">Get Started</a>
+                               </div>
                            </div>
-                       </div>
-                 </div>
-                 <div class="card">
-                     <div class="box">
-                         <div class="content">
-                             <h2>01</h2>
-                             <h3>Array</h3>
-                             <p>22 resources</p>
-                             <a href="#">Get Started</a>
+                     </div> -->
+                     <!-- <div class="card">
+                         <div class="box">
+                             <div class="content">
+                                 <h2>01</h2>
+                                 <h3>Array</h3>
+                                 <p>22 resources</p>
+                                 <a href="#">Get Started</a>
+                             </div>
                          </div>
-                     </div>
-               </div> 
-            </div>
-             </div>
-    </div>
-    </div>
-   </div>
+                   </div>  -->
+                </div>
+                 </div>
+        </div>
+        </div>
+    <%})%>
     
+   </div>
+    <script>
+        function fun(loc){
+            window.location = `http://${loc}`;
+        }
+    </script>
 
 </body>
 </html>

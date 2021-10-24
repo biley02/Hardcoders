@@ -11,21 +11,19 @@ const tracksSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  tracks: [
+  tracktitle: [
     {
-      title: {
-        type: String,
-        required: true,
-      },
-      description: {
-        type: String,
-      },
-      resource: [
-        {
-          name: String,
-          url: String,
-        },
-      ],
+      type: String,
+    },
+  ],
+  trackdescription: [
+    {
+      type: String,
+    },
+  ],
+  trackresource: [
+    {
+      type: String,
     },
   ],
   visibility: {
