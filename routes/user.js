@@ -48,7 +48,7 @@ router.post("/signup", async (req, res) => {
         password: hashedPassword,
         active: true,
       });
-
+      console.log(newUser);
       const newuser = await newUser.save();
       if (!newUser) {
         console.log("Unable to signup");

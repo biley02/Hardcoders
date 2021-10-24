@@ -19,10 +19,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  handle: {
-    type: String,
-    unique: true,
-  },
   active: Boolean,
   description: {
     type: String,
