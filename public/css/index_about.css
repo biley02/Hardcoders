@@ -2,7 +2,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 20px;
     padding-bottom: 0px;
     -webkit-box-pack: space-evenly;
