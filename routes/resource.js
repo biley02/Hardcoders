@@ -18,15 +18,29 @@ router.use(
 
 router.get("/", async (req, res) => {
   try {
-    const resources = await Resource.find({})
-      .sort({
-        likes: -1,
-      })
-      .populate("author");
-    // console.log(resources);
-    res.render("resource_new", {
-      resources: resources,
-    });
+    var noMatch = null;
+    if (req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+      const resources = await Resource.find({ tags: regex })
+        .sort({
+          likes: -1,
+        })
+        .populate("author");
+      // console.log(resources);
+      res.render("resource_new", {
+        resources: resources,
+      });
+    } else {
+      const resources = await Resource.find({})
+        .sort({
+          likes: -1,
+        })
+        .populate("author");
+      // console.log(resources);
+      res.render("resource_new", {
+        resources: resources,
+      });
+    }
   } catch (err) {
     console.error(err);
     req.send("Something went wrong. Try again");
@@ -167,4 +181,8 @@ router.get("/like/:resource_id", authorization, async (req, res) => {
     res.redirect("/resource");
   }
 });
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 module.exports = router;

@@ -186,40 +186,31 @@ router.post("/edit-profile/:id", authorization, async (req, res) => {
   res.redirect("/user/profile");
 });
 
-router.get("/public-profile/:name", async (req, res) => {
+router.get("/public-profile", authorization, async (req, res) => {
   try {
-    // const token = req.cookies.authorization;
-    const finduser = await User.find({ active: true }, null, {
-      sort: { name: 1 },
-    });
-    // const userBlog = await Blog.find();
-    // req.dbUser = await (await User.findOne({ dscHandle: req.params.handle }))
-    const token = req.cookies.authorization;
-    let user;
-    if (token) {
-      const decodedData = await jwt.verify(token, process.env.JWT_SECRET);
-      if (decodedData) user = await User.findById(decodedData.userId);
-    }
-    let searchedUser = await User.findOne({
-      name: req.params.name,
-    });
-    console.log(searchedUser);
-    await searchedUser.populate("tracks");
-    await searchedUser.populate("skills");
-    await searchedUser.populate("friends");
-    if (searchedUser) {
-      //   res.render("public-profile", {
-      //     searchedUser,
-      //     user,
-      //     found: finduser,
-      //   });
-      res.send(searchedUser);
+    var noMatch = null;
+    if (req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+      let searchedUser = await User.find({
+        name: regex,
+      });
+      console.log(searchedUser);
+      if (searchedUser) {
+        //   res.render("public-profile", {
+        //     searchedUser,
+        //     user,
+        //     found: finduser,
+        //   });
+        res.send(searchedUser);
+      } else {
+        res.send("NO user found");
+      }
     } else {
-      //   res.render("404-page");
-      console.log("error");
+      res.redirect("/profile");
     }
   } catch (error) {
     console.error(error);
+    res.send(error);
     // res.render("404-page");
   }
 });
@@ -244,6 +235,7 @@ router.post("/notes", authorization, async (req, res) => {
   try {
     let user = await User.findById(req.user.userId);
     let newnote = req.body;
+    console.log(newnote);
     let saved = await new Note({
       title: newnote.title,
       author: req.user.userId,
@@ -258,7 +250,7 @@ router.post("/notes", authorization, async (req, res) => {
     console.log(saved);
     console.log(user);
     await user.save();
-    res.redirect("/user/profile");
+    res.redirect("/resource");
   } catch (err) {
     console.log(err);
   }
@@ -276,6 +268,8 @@ router.get("/friends", authorization, async (req, res) => {
     res.redirect("/");
   }
 });
-
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 //Export
 module.exports = router;
