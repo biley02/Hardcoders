@@ -69,9 +69,9 @@ app.get("/", authorization, (req, res) => {
   res.render("viewresource");
 });
 
-app.get("/tracks-form", (req, res) => {
-  res.render("resource-form");
-});
+// app.get("/tracks-form", (req, res) => {
+//   res.render("index");
+// });
 
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
