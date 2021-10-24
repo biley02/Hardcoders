@@ -31,8 +31,9 @@ require("./db/conn");
 const { Console } = require("console");
 
 //body parser
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //setting up methods
