@@ -22,7 +22,12 @@
    
     </div>
 <div class="container"> 
-  <a href="/resource/create" class="btn card-link" id="crt">Continue</a>
+  <form action="/resource" method="GET" class="form-inline" id="biley">
+    <div class="form-group">
+        <input type="text" name="search" placeholder="Search resource by tags..." class="form-control">
+    </div>
+</form>
+  <a href="/resource/create" class="btn card-link" id="crt">Add Resource</a>
               
     <div class="row">
         <!-- <% resources.forEach(function(resource){%>
@@ -44,14 +49,14 @@
         <%})%> -->
         <% resources.forEach(function(resource){%>
           <div class="card" style="width: 18rem;">
-              <img src="/img/images.jpg" alt="Image not available" class="card-img-top-">
+              <img src="<%=resource.cover%>" alt="Image not available" class="card-img-top-">
               <div class="card-body">
                 <h5 class="card-title"><%=resource.title%></h5>
                 <p class="card-text"><%=resource.body.substring(0, 20)%>...</p>
                 <div class="bottomButtons">
-                  <a href="#" class="card-link vote"><i class="fas fa-thumbs-up"></i></a>
+                  <a href="/resource/like/<%=resource._id%>" class="card-link vote"><i class="fas fa-thumbs-up"></i></a><%=resource.likes%>
                   
-                  <a href="/resource/view/<%=resource._id%>" class="btn card-link" id="continue">Continue</a>
+                  <a href="/resource/view/<%=resource._id%>" class="btn card-link" id="continue">View</a>
               
                 </div>         
                 
@@ -114,6 +119,9 @@
       0 22.3px 17.9px rgba(0, 0, 0, 0.072),
       0 41.8px 33.4px rgba(0, 0, 0, 0.086),
       0 10px 80px rgba(0, 0, 0, 0.12);
+  }
+  #biley{
+    margin-left: 3vw;
   }
   body {
     margin: 0;

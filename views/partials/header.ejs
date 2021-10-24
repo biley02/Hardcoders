@@ -2,10 +2,16 @@
   <nav>
    <div class="icon">
        <b>Study<br> Corner</b>
-       <div class="search_box">
-           <input type="search" placeholder="Search">
+       <!-- <form class="search_box" class="form-inline" action="/user/public-profile" method="GET">
+           <input type="search" placeholder="Search for users...">
            <span class="fa fa-search" style="margin-left:-3vw; border: none;"></span>
-       </div>
+       </form> -->
+       <form action="/user/public-profile" method="GET" class="form-inline search_box">
+         <div class="form-group">
+             <input type="text" name="search" placeholder="user search..." class="form-control">
+             <span class="fa fa-search" style="margin-left:-3vw; border: none;"></span>
+         </div>
+     </form>
    </div>
    
    <ol>
