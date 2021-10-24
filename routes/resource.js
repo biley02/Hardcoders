@@ -146,7 +146,7 @@ router.post("/comment/:id", authorization, async (req, res) => {
     } else {
       resource.comments = [saved];
     }
-    console.log(saved);
+    // console.log(saved);
     // console.log(resource.comments);
     await resource.save();
     res.redirect(req.get("referer"));
@@ -174,7 +174,7 @@ router.get("/like/:resource_id", authorization, async (req, res) => {
     user.resourcelikes = likesArr;
     await resource.save();
     await user.save();
-    console.log(resource);
+    // console.log(resource);
     res.redirect(req.get("referer"));
   } catch (error) {
     console.log(error);

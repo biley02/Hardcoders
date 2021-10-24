@@ -114,7 +114,7 @@ router.get("/tracks", authorization, async (req, res) => {
     let user = req.user;
     const founduser = await User.findOne({ email: user.email });
     await founduser.populate("tracks");
-    console.log(founduser);
+    // console.log(founduser);
     res.render("track_page", {
       tracks: founduser.tracks,
     });
@@ -248,7 +248,7 @@ router.post("/notes", authorization, async (req, res) => {
   try {
     let user = await User.findById(req.user.userId);
     let newnote = req.body;
-    console.log(newnote);
+    // console.log(newnote);
     let saved = await new Note({
       title: newnote.title,
       author: req.user.userId,
@@ -260,8 +260,8 @@ router.post("/notes", authorization, async (req, res) => {
     } else {
       user.notes = [saved];
     }
-    console.log(saved);
-    console.log(user);
+    // console.log(saved);
+    // console.log(user);
     await user.save();
     res.redirect("/resource");
   } catch (err) {
