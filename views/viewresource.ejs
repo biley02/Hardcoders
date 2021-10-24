@@ -59,6 +59,55 @@
  </div>
 
 </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	Add a note
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Add a new note</h5>
+		  
+		</div>
+		<form action="/user/notes" method="POST">
+			<div class="row">
+			  <div class="col-25">
+				<label for="fname">Title</label>
+			  </div>
+			  <div class="col-75">
+				<input type="text" id="new_id" name="title" placeholder="Title.." >
+			  </div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+				  <label for="fname">Description</label>
+				</div>
+				<div class="col-75">
+				  <input type="text" id="new_id" name="description" placeholder="Title.." >
+				</div>
+			  </div>
+			  <div class="row">
+				<div class="col-25">
+				  <label for="fname">URL of the current page</label>
+				</div>
+				<div class="col-75">
+				  <input type="text" id="new_id" name="url" placeholder="Enter URL of the current page" >
+				</div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" value="submit" class="btn btn-success">Save note</button>
+			  </div>
+			
+		  </form>
+		
+		
+	  </div>
+	</div>
+  </div>
 
 <div class="container-2">
 	<br>
@@ -125,6 +174,7 @@ function showSlides(n) {
 	slides[slideIndex-1].style.display = "block";  
 	dots[slideIndex-1].className += " active";
 }
+document.getElementById(new_id).value = window.location.href;
 </script>
 
 </body>

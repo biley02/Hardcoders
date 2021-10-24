@@ -244,6 +244,7 @@ router.post("/notes", authorization, async (req, res) => {
   try {
     let user = await User.findById(req.user.userId);
     let newnote = req.body;
+    console.log(newnote);
     let saved = await new Note({
       title: newnote.title,
       author: req.user.userId,
@@ -258,7 +259,7 @@ router.post("/notes", authorization, async (req, res) => {
     console.log(saved);
     console.log(user);
     await user.save();
-    res.redirect("/user/profile");
+    res.redirect("/resource");
   } catch (err) {
     console.log(err);
   }
