@@ -18,15 +18,29 @@ router.use(
 
 router.get("/", async (req, res) => {
   try {
-    const questions = await Question.find({})
-      .sort({
-        likes: -1,
-      })
-      .populate("author");
+    var noMatch = null;
+    if (req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+      const questions = await Question.find({ tags: regex })
+        .sort({
+          likes: -1,
+        })
+        .populate("author");
 
-    res.render("forum", {
-      questions: questions,
-    });
+      res.render("forum", {
+        questions: questions,
+      });
+    } else {
+      const questions = await Question.find({})
+        .sort({
+          likes: -1,
+        })
+        .populate("author");
+
+      res.render("forum", {
+        questions: questions,
+      });
+    }
   } catch (err) {
     console.error(err);
     req.send("Something went wrong. Try again");
@@ -166,5 +180,9 @@ router.post("/answer/:id", authorization, async (req, res) => {
     res.send("error");
   }
 });
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 
 module.exports = router;
