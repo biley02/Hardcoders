@@ -16,7 +16,12 @@
  
 
 <body>
-	<%- include('partials/header') %>
+	<div class="pos">
+		<%- include('partials/header') %>
+	  </div>
+	  <div class="widt">
+	 
+	  </div>
 <div class="cont">
 	<div class="slider-img">
 
@@ -60,8 +65,8 @@
 
 </div>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-	Add a note
+<button type="button" id="shif" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	<i class="fa fa-sticky-note" aria-hidden="true"></i>
   </button>
   
   <!-- Modal -->
@@ -77,7 +82,7 @@
 			  <div class="col-25">
 				<label for="fname">Title</label>
 			  </div>
-			  <div class="col-75">
+			  <div class="col-75 as1">
 				<input type="text" id="new_id" name="title" placeholder="Title.." >
 			  </div>
 			</div>
@@ -91,9 +96,9 @@
 			  </div>
 			  <div class="row">
 				<div class="col-25">
-				  <label for="fname">URL of the current page</label>
+				  <label for="fname">URL link</label>
 				</div>
-				<div class="col-75">
+				<div class="col-75 as2">
 				  <input type="text" id="new_id" name="url" placeholder="Enter URL of the current page" >
 				</div>
 			  </div>
@@ -114,7 +119,7 @@
 	<h1 class="bio"><%=resource.title %></h1>
 	<div class="suggestion">
 		<h3>TITLE:</h3>
-		<h3>LIKES: 100 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 300 <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></h3>
+		<h3>LIKES: &nbsp &nbsp<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </h3>
 		<h3>CATEGORY:</h3> <%= resource.category%>
 		<h3>TAGS:</h3> <%= resource.tags%>
 		<h3>AUTHOR:</h3> <%= resource.author.name%>
@@ -154,7 +159,7 @@ showSlides(slideIndex);
 function plusSlides(n) {
 	showSlides(slideIndex += n);
 }
-
+ 
 function currentSlide(n) {
 	showSlides(slideIndex = n);
 }
@@ -178,5 +183,28 @@ document.getElementById(new_id).value = window.location.href;
 </script>
 
 </body>
-
+<style>
+	.pos{
+	position: absolute;
+  z-index: 1000;
+  }
+  #shif{
+	  float: right;
+  }
+  .widt{
+      height:15vh;
+    }
+	.col-25{
+    margin-left: 3vw;
+	}
+	.col-75{
+margin-left:4vw;
+	}
+	.as1{
+		margin-left:8.2vw;
+	}
+	.as2{
+		margin-left: 6.2vw;
+	}
+</style>
 </html>
