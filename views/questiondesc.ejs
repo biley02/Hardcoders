@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>viewquestion</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<link rel="stylesheet" href="/css/viewresource.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+ 
+
+<body style="background-color:  #D1CEFC; ">
+	<div class="pos">
+		<%- include('partials/header') %>
+	  </div>
+	  <div class="widt">
+	 
+	  </div>
+<div class="cont">
+	
+
+
+<div class="container-2" style="background-color:white; border-radius: 10px;">
+	<br>
+	<h1 style="justify-content: center; margin: 0 auto;"><%=question.title %></h1>
+	<div class="suggestion">
+		<b>Title: </b><span><%=question.title %></span><br>
+		<b>Posted by: </b> <%=question.author%><br>
+		<b>Posted on:</b>  <%=question.queryTime%><br>
+        <b>Description : </b>
+        <div>
+            <%=question.body%>
+        </div>
+		<b>Tags:</b>  <%=question.tags%><br>
+        <br>
+        <br>
+		<h2>Solutions:</h2> 
+		
+            <!-- <label for="title">Add Answer </label>
+            <textarea name="body" id="body" cols="30" rows="2" placeholder="Add answer" required></textarea>
+             -->
+        
+		<div class="commnts" style="margin: 0 auto;">
+			<form action="/forum/answer/<%=question._id%>" method="POST">
+			<textarea id="subject" name="body" type="text" placeholder="Write answer.." style="height:210px;width: 700px;"></textarea>
+             <div style="justify-content: center;margin: 0 auto;">
+                <button type="submit" class="btn btn-success" style="background:#746AF9;">Add Answer</button>
+		    </div>
+        </form>
+		</div>
+		<div class="commnts-show">
+			<br>
+			
+                <!-- List Item -->
+                <% question.comments.forEach(function(comment){%>
+                  
+                        <div>
+                            <!-- Comment Top -->
+                            <div >
+                                <span class="title"><b>Posted By</b>: <%=comment.author%></span>
+                             
+                                <!-- <span class="comment-votes"> <button><i class="fas fa-sort-up"></i></button>  Votes <button><i class="fas fa-sort-down"></i></button></span> -->
+                            </div>
+                            
+                            <!-- Comment Description -->
+                            <div >
+                                <%=comment.body%>
+                            </div>
+                            <br>
+                        </div>
+                    
+                <%})%>
+         
+			
+			
+			<br>
+		</div>
+		
+		 </div>
+</div>
+<br>
+</div>
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+	showSlides(slideIndex += n);
+}
+ 
+function currentSlide(n) {
+	showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+	var i;
+	var slides = document.getElementsByClassName("mySlides");
+	var dots = document.getElementsByClassName("dot");
+	if (n > slides.length) {slideIndex = 1}    
+	if (n < 1) {slideIndex = slides.length}
+	for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";  
+	}
+	for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+	}
+	slides[slideIndex-1].style.display = "block";  
+	dots[slideIndex-1].className += " active";
+}
+document.getElementById(new_id).value = window.location.href;
+</script>
+
+</body>
+<style>
+    h1 {
+    text-align:center;
+}
+	.pos{
+	position: absolute;
+  z-index: 1000;
+  }
+  #shif{
+	  float: right;
+  }
+  .widt{
+      height:15vh;
+    }
+	.col-25{
+    margin-left: 3vw;
+	}
+	.col-75{
+margin-left:4vw;
+	}
+	.as1{
+		margin-left:8.2vw;
+	}
+	.as2{
+		margin-left: 6.2vw;
+	}
+</style>
+</html>
