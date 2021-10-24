@@ -130,3 +130,23 @@
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
+
+  .f1_track{
+    display: flex;
+    align-items: center;
+  }
+  .special-btn{
+    width: 80px;
+      border: 0px;
+      font-family: 'Poppins';
+      font-size: 14px;
+      border-radius: 20px;
+      height: 30px;
+      box-shadow: 1px 2px 3px #bfbfbfe3;
+      background: linear-gradient(45deg,rgb(232 244 255),white);
+      display: flex;
+      align-content: space-around;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+  }
