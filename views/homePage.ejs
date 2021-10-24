@@ -13,17 +13,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </head>
 <body style="font-family: 'Poppins', sans-serif;
 margin: 0;
 padding: 0;">
+<div class="pos">
+  <%- include('partials/header') %>
+</div>
+<div class="widt">
+
+</div>
     <!--About Us Section Starts-->
 
     <main class="main" style="
     margin: 0px 60px;
 ">
       
-        <section class="about" id="about">
+        <section class="about" id="about"style="z-index: 0;">
           <div class="background">
             <img
               src="/img/about_us.jpg"
@@ -31,7 +39,7 @@ padding: 0;">
               class="background__image"
             />
           </div>
-          <div class="content">
+          <div class="content" >
             <h1 class="heading__primary intersect">About Us</h1>
             <h3 class="heading__secondary">
               We are a team of Tech Enthusiasts belonging from the National Institute of Technology, Silchar. We are an inquisitive bunch 
@@ -49,7 +57,7 @@ padding: 0;">
           </div>
         </section>
         <!--About Us Section Ends-->
-        <section class="about">
+        <section class="about" style=" z-index: 0;">
             <div class="content">
               <h1 class="heading__primary intersect">Highlights</h1>
               <h3 class="heading__secondary">
@@ -63,12 +71,8 @@ padding: 0;">
                 can fetch users points.
               </h3>
             </div>
-            <div class="background">
-              <img
-                src="/img/about_study_corner.png"
-                alt="about dsc nits"
-                class="background__image"
-              />
+            <div class="background" >
+             <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_aljpo8bg.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
             </div>
           </section>
 
@@ -95,11 +99,11 @@ padding: 0;">
                 font-weight: 400;
                 font-size: 18px;
             ">Why Study Corner?</h4>
-                <br />
+               
                 <p></p>
                 <p style="
                 font-weight: 300;
-                font-size: 14px;
+                font-size: .7rem;
             ">
                   Study corner helps to create a conducive environment to attain one’s study goals and assist in dealing with the challenges arriving within.
                   It helps you in structurizing your goals in an efficient and innovative way. 
@@ -116,11 +120,11 @@ padding: 0;">
                 font-weight: 400;
                 font-size: 18px;
             ">Is there a chat system? </h4>
-                <br />
+                
                 <p></p>
                 <p style="
                 font-weight: 300;
-                font-size: 14px;
+                font-size: .7rem;
             ">
                   No. As of now, one can see a friend’s goals, tracks and share resources. But we are open to integrate in the future versions of the site where you can chat with friends and make your study sessions more fun.
                 </p>
@@ -136,11 +140,11 @@ padding: 0;">
                 font-weight: 400;
                 font-size: 18px;
             ">How to check any other profile?</h4>
-                <br />
+               
                 <p></p>
                 <p style="
                 font-weight: 300;
-                font-size: 14px;
+                font-size: .7rem;
             ">
                   Click on the search button present on the navigation bar at the
                   top of each page. Type the name of the user you want to search and
@@ -159,11 +163,11 @@ padding: 0;">
                 font-weight: 400;
                 font-size: 18px;
             ">Why is it better than other study platforms?</h4>
-                <br />
+                
                 <p></p>
                 <p style="
                 font-weight: 300;
-                font-size: 14px;
+                font-size: .7rem;
             ">
                   This platform allows one to create customized learning tracks packaged with milestones and resources. Along with that the other features of the platform make it unique. 
                 </p>
@@ -179,11 +183,11 @@ padding: 0;">
                 font-weight: 400;
                 font-size: 18px;
             ">Can we view somebody’s private tracks?</h4>
-                <br />
+                
                 <p></p>
                 <p style="
                 font-weight: 300;
-                font-size: 14px;
+                font-size: .7rem;
             ">
                   Only if the individual is your friend you can view his/her private tracks and notes as well.
                 </p>
@@ -199,16 +203,15 @@ padding: 0;">
                 font-weight: 400;
                 font-size: 18px;
             ">How do I login if I forgot my password?</h4>
-                <br />
+                
                 <p></p>
                 <p style="
                 font-weight: 300;
-                font-size: 14px;
+                font-size: .7rem;
             ">
                   Just click on the forgot password option given on the Login Page.
                   You have to enter your email and then a mail will be sent to your
-                  registered email address. Click on that link before it expires and
-                  update your password
+                  registered email address. 
                 </p>
                 <!-- <p class="more">View all questions</p> -->
               </div>
@@ -270,11 +273,20 @@ padding: 0;">
                   /* margin: 3px 5px; */
                   color: aliceblue;
                   border-radius: 2px;
-                  align-self: center;">Submit</button>
+                  align-self: center;text-align: center;">Submit</button>
                 </div>
               </div>
             </form>
           </section>
     </main>  
+    <%- include('partials/footer') %>
 </body>
+<style>
+  .pos{
+    position: fixed;
+  }
+  .widt{
+      height:15vh;
+    }
+</style>
 </html>
