@@ -26,9 +26,15 @@ const userSchema = new mongoose.Schema({
   location: {
     type: String,
   },
-  skill1: String,
-  skill2: String,
-  skill3: String,
+  skill1: {
+    type: String,
+  },
+  skill2: {
+    type: String,
+  },
+  skill3: {
+    type: String,
+  },
   goals: {
     type: String,
   },
