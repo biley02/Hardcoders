@@ -13,24 +13,9 @@
     <title>resources</title>
 </head>
 <body>
-<div class="container">
-<div class="Navbar" id="IdNavbar">
-        <div class="title1">
-        <p>STUDY <br>CORNER</p>
-        </div>
 
-        <div class="Navbar-contents">  
-           <form action="#">
-        <a><i class="fa fa-search" aria-hidden="true"></i><input type="text" placeholder=" Search for Codeoctober...."></a>
-     </form>  
-        <a href="#">Home</a>
-        <a href="#">Discussion</a>
-        <a href="#">Login</a>
-        <a href="#">Signup</a>
-        </div>
-</div>
-
-<div class="container-1">
+    <%- include('partials/header') %>
+<!-- <div class="container-1">
 <div class="container-1-contents">
     <a href="#">BOOKS</a>
     <a href="#">VIDEOS</a>
@@ -53,10 +38,10 @@
             </select>
     </a></div>
 </div>
-</div>
+</div> -->
 <div class="container-2">
     <div class="container-1-row">
-        <% resources.forEach(function(resource){%>
+        <!-- <% resources.forEach(function(resource){%>
         <div class="container-2-column">
             <div class="cont-3">
               
@@ -71,86 +56,26 @@
                 </div>
             </div>
         </div>
-        <%})%>
-        <!-- <div class="container-2-column">
-            <div class="cont-3">
-              
-            </div>
-            <div class="cont-4">
-                <div class="cont-5">
-                    <h3>Javascript<br>Fundamen</h3>
-                </div>
-                <div class="cont-6">
-                    <h3>Course description</h3>
-                    <input type="submit" id="signIn" class="btn"  value="Continue">
-                </div>
-            </div>
-        </div> -->
-        <!-- <div class="container-2-column">
-            <div class="cont-3">
-              
-            </div>
-            <div class="cont-4">
-                <div class="cont-5">
-                    <h3>Javascript<br>Fundamen</h3>
-                </div>
-                <div class="cont-6">
-                    <h3>Course description</h3>
-                    <input type="submit" id="signIn" class="btn"  value="Continue">
-
-                </div>
-            </div>
-        </div> -->
+        <%})%>   -->
         
-      </div>
-      <!-- <div class="container-1-row">
-        <div class="container-2-column">
-            <div class="cont-3">
+        <% resources.forEach(function(resource){%>
+        <div class="card" style="width: 18rem;">
+            <img src="/img/images.jpg" alt="Image not available" class="card-img-top-">
+            <div class="card-body">
+              <h5 class="card-title">Name: Modern JavaScript Webdevelopment CookBook</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Author: Pablo</h6>
+              <p class="card-text">Book on Javascript .</p>
+              <div class="bottomButtons">
+                <a href="#" class="card-link vote"><i class="fas fa-thumbs-up"></i></a>
+                <a href="#" class="card-link vote"><i class="fas fa-thumbs-down"></i></a>
+                <a href="#" class="btn  card-link" id="continue">Continue</a>
+              </div>         
               
             </div>
-            <div class="cont-4">
-                <div class="cont-5">
-                    <h3>Javascript<br>Fundamen</h3>
-                </div>
-                <div class="cont-6">
-                    <h3>Course description</h3>
-                    <input type="submit" id="signIn" class="btn"  value="Continue">
+          </div>
+          <%})%> 
 
-                </div>
-            </div>
-        </div>
-        <div class="container-2-column">
-            <div class="cont-3">
-              
-            </div>
-            <div class="cont-4">
-                <div class="cont-5">
-                    <h3>Javascript<br>Fundamen</h3>
-                </div>
-                <div class="cont-6">
-                    <h3>Course description</h3>
-                    <input type="submit" id="signIn" class="btn"  value="Continue">
-
-                </div>
-            </div>
-        </div>
-        <div class="container-2-column">
-            <div class="cont-3">
-              
-            </div>
-            <div class="cont-4">
-                <div class="cont-5">
-                    <h3>Javascript<br>Fundamen</h3>
-                </div>
-                <div class="cont-6">
-                 <h3>Course description</h3>
-                 <input type="submit" id="signIn" class="btn"  value="Continue">
-
-                </div>
-            </div>
-        </div>
-
-      </div> -->
+      </div>   
 </div>
 
 </div>
@@ -158,6 +83,26 @@
 <%- include('partials/footer') %>
 </body>
 <style>
-
-</style>
+    .card-title{
+      font-size: 1em;
+    }
+    .card-link {
+    color:black;
+    }
+    .card-body{
+      font-family: 'Cairo', sans-serif;
+      font-family: 'Lobster', cursive;
+      font-family: 'Poppins', sans-serif;
+      font-family: 'Zen Old Mincho', serif;
+          }
+    #continue{
+      margin-left: 6vw;
+      color:white;
+      font-weight: bold;
+      background-color:rgb(46, 90, 173);
+    }
+    .card{
+    box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.3); ;
+    }
+  </style>
 </html>
