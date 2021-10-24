@@ -39,7 +39,7 @@ label {
 }
 
 textarea {
-    height: 20rem;
+    height: 15rem;
     border-radius: 1rem;
     border: 1px solid grey;
     padding: 1rem;
@@ -47,8 +47,12 @@ textarea {
     color: black;
 }
 
+#title {
+    height: 7rem;
+}
+
 #tags{
-    height: 10rem;
+    height: 5rem;
 }
 
 #submit {

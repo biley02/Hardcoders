@@ -13,6 +13,9 @@ const questionSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  queryTime: {
+    type: String,
+  },
   slug: {
     type: String,
   },
@@ -22,11 +25,7 @@ const questionSchema = new mongoose.Schema({
   tags: {
     type: String,
   },
-  author: {
-    type: ObjectId,
-    ref: "User",
-    required: true,
-  },
+  author: String,
   comments: [
     {
       type: ObjectId,

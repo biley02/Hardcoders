@@ -24,7 +24,9 @@ router.get("/", async (req, res) => {
       })
       .populate("author");
 
-    res.send(questions);
+    res.render("forum", {
+      questions: questions,
+    });
   } catch (err) {
     console.error(err);
     req.send("Something went wrong. Try again");
@@ -57,6 +59,10 @@ router.get("/appreciate/:question_id", authorization, async (req, res) => {
   }
 });
 
+router.get("/create", authorization, (req, res) => {
+  res.render("ask");
+});
+
 router.post("/create", authorization, async (req, res) => {
   var cover =
     "https://cdn-images-1.medium.com/max/800/1*fDv4ftmFy4VkJmMR7VQmEA.png";
@@ -70,6 +76,12 @@ router.post("/create", authorization, async (req, res) => {
     if (!question) {
       req.send("Something went wrong");
     }
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
     const saved = await new Question({
       title: question.title,
       slug: (
@@ -77,11 +89,12 @@ router.post("/create", authorization, async (req, res) => {
         "-" +
         Math.random().toString(36).substr(2, 8)
       ).toLowerCase(),
-      author: req.user.userId,
+      author: req.user.name,
       category: question.category,
       cover: cover,
       body: question.body,
       tags: question.tags,
+      queryTime: today,
     }).save();
     if (user.questions) {
       user.questions.push(saved);
@@ -100,9 +113,6 @@ router.get("/view/:id", authorization, async (req, res) => {
   try {
     //find the corresponding question in db
     let slug = req.params.id;
-    if (!slug) {
-      res.send("Error page");
-    }
 
     const question = await Question.findOne({
       _id: slug,
@@ -110,27 +120,19 @@ router.get("/view/:id", authorization, async (req, res) => {
 
     await question.populate("comments");
     await question.populate("tags");
-    if (!question) {
-      res.send("error");
-    }
 
     //render result page
-    // res.render("fullblog", {
-    //   user : req.user,
-    //   found: finduser,
-    //   blog: blog,
-    //   popularBlogs: popularBlogs || [],
-    //   blogsCount: blogsCount,
-    // });
-    res.send(question);
+    res.render("questionDescription", {
+      question: question,
+    });
   } catch (e) {
     console.log(e.message);
-    req.send("Something went wrong. Try again");
   }
 });
 
 //answering to a question (adding comment to the question)
 router.post("/answer/:id", authorization, async (req, res) => {
+  console.log("hi");
   try {
     //find the corresponding question in db
     let slug = req.params.id;
@@ -141,7 +143,7 @@ router.post("/answer/:id", authorization, async (req, res) => {
     const question = await Question.findOne({
       _id: slug,
     });
-    console.log(question);
+    // console.log(question);
     const answer = req.body;
     if (!answer) {
       res.send("something wrong");
@@ -149,15 +151,16 @@ router.post("/answer/:id", authorization, async (req, res) => {
     }
     const saved = await new Comment({
       body: answer.body,
-      author: req.user._id,
+      author: req.user.name,
     }).save();
     if (question.comments) {
       question.comments.push(saved);
     } else {
       question.comments = [saved];
     }
+    // console.log(saved);
     await question.save();
-    res.redirect("/forum");
+    res.redirect(`/forum/view/${question._id}`);
   } catch (e) {
     console.log(e);
     res.send("error");

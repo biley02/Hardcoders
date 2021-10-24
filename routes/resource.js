@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
         likes: -1,
       })
       .populate("author");
+    console.log(resources);
     res.render("resource_new", {
       resources: resources,
     });
@@ -85,16 +86,12 @@ router.get("/view/:id", authorization, async (req, res) => {
     if (!resource) {
       res.send("error");
     }
-
     //render result page
-    // res.render("fullblog", {
-    //   user : req.user,
-    //   found: finduser,
-    //   blog: blog,
-    //   popularBlogs: popularBlogs || [],
-    //   blogsCount: blogsCount,
-    // });
-    res.send(resource);
+    res.render("viewresource", {
+      user: req.user,
+      resource: resource,
+      link: resource.url,
+    });
   } catch (e) {
     console.log(e.message);
     req.send("Something went wrong. Try again");
@@ -113,7 +110,7 @@ router.post("/comment/:id", authorization, async (req, res) => {
     const resource = await Resource.findOne({
       _id: slug,
     });
-    console.log(resource);
+    // console.log(resource);
     const comment = req.body;
     if (!comment) {
       res.send("something wrong");
@@ -121,16 +118,17 @@ router.post("/comment/:id", authorization, async (req, res) => {
     }
     const saved = await new Comment({
       body: comment.body,
-      author: req.user._id,
+      author: req.user.name,
     }).save();
     if (resource.comments) {
       resource.comments.push(saved);
     } else {
       resource.comments = [saved];
     }
-    console.log(resource.comments);
+    console.log(saved);
+    // console.log(resource.comments);
     await resource.save();
-    res.redirect("/resource");
+    res.redirect(req.get("referer"));
   } catch (e) {
     console.log(e);
     res.send("error");

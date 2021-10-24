@@ -61,27 +61,35 @@
 
 <div class="container-2">
 	<br>
-	<h1 class="bio">ABOUT BIOLOGY</h1>
+	<h1 class="bio"><%=resource.title %></h1>
 	<div class="suggestion">
 		<h3>TITLE:</h3>
 		<h3>LIKES: 100 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 300 <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></h3>
-		<h3>CATEGORY:</h3> 
-		<h3>TAGS:</h3>
-		<h3>AUTHOR:</h3>
-		<h3>URLS:</h3>
-		<h3>COMMENTS:</h3>
-		<div class="commnts">
+		<h3>CATEGORY:</h3> <%= resource.category%>
+		<h3>TAGS:</h3> <%= resource.tags%>
+		<h3>AUTHOR:</h3> <%= resource.author.name%>
+		<h3>URL:</h3> <%= resource.url%>
+		<h3>COMMENTS:</h3> 
+		<form class="commnts" action="/resource/comment/<%=resource._id%>" method="POST">
+			<textarea id="subject" name="body" placeholder="Write your comment.." style="height:210px;width: 700px;"></textarea>
+             <!-- <div class="submit"> -->
+				<button type="submit" class="btn btn-success">Add comment</button>
+		</form>
+		<!-- <div class="commnts">
 			
 			<textarea id="subject" name="subject" placeholder="Write something.." style="height:210px;width: 700px;"></textarea>
              <div class="submit">
 			<input type="submit" placeholder="Add"  style="width: 8vw;height: 7vh;background-color:#3F5F8E; color: white;
 			font-weight: bold">
 		    </div>
-		</div>
+		</div> -->
 		<div class="commnts-show">
 			<br>
-			<p><span style="font-weight: bold;">Abhishek</span>: absb dgdg dgdgb dggd gddh bddh hh adadsjhwae sdgf</p>
-			<p><span style="font-weight: bold;">Abhishek</span>: absb dgdg dgdgb dggd gddh bddh hh adadsjhwae sdgf</p>
+			<% resource.comments.forEach(function(comment){%>
+				<p><span style="font-weight: bold;"><%=comment.author%></span>: <%=comment.body%></p>
+			<%})%>
+			
+			
 			<br>
 		</div>
 		
