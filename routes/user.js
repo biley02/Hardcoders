@@ -128,7 +128,7 @@ router.get("/tracks", authorization, async (req, res) => {
 router.post("/tracks", authorization, async (req, res) => {
   try {
     let user = await User.findById(req.user.userId);
-    console.log(req.body);
+    // console.log(req.body);
     let newtrack = req.body;
     let saved = await new Tracks({
       title: req.body.title,
@@ -143,7 +143,7 @@ router.post("/tracks", authorization, async (req, res) => {
     } else {
       user.tracks = [saved];
     }
-    console.log(saved);
+    // console.log(saved);
     // console.log(user);
     await user.save();
     res.redirect("/user/tracks");
