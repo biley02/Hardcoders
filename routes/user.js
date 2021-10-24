@@ -48,7 +48,7 @@ router.post("/signup", async (req, res) => {
         password: hashedPassword,
         active: true,
       });
-
+      console.log(newUser);
       const newuser = await newUser.save();
       if (!newUser) {
         console.log("Unable to signup");
@@ -106,10 +106,15 @@ router.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
+router.get("/add-track", authorization, async (req, res) => {
+  res.render("track-form");
+});
+
 router.get("/tracks", authorization, async (req, res) => {
   try {
     let user = req.user;
-    const founduser = await User.find({ email: user.email }).populate("tracks");
+    const founduser = await User.findOne({ email: user.email });
+    await founduser.populate("tracks");
     console.log(founduser);
     res.render("track_page", {
       tracks: founduser.tracks,
@@ -123,22 +128,25 @@ router.get("/tracks", authorization, async (req, res) => {
 router.post("/tracks", authorization, async (req, res) => {
   try {
     let user = await User.findById(req.user.userId);
+    // console.log(req.body);
     let newtrack = req.body;
     let saved = await new Tracks({
-      title: newtrack.title,
+      title: req.body.title,
       author: req.user.userId,
-      tracks: newtrack.tracks,
-      visibility: newtrack.visibility,
+      tracktitle: req.body.tracktitle,
+      trackdescription: req.body.trackdescription,
+      trackresource: req.body.trackresource,
+      visibility: req.body.visibility,
     }).save();
     if (user.tracks) {
       user.tracks.push(saved);
     } else {
       user.tracks = [saved];
     }
-    console.log(saved);
-    console.log(user);
+    // console.log(saved);
+    // console.log(user);
     await user.save();
-    res.redirect("/");
+    res.redirect("/user/tracks");
   } catch (err) {
     console.log(err);
   }

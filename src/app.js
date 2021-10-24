@@ -65,9 +65,9 @@ app.use("/user", userRoutes);
 app.use("/forum", discussionRoutes);
 app.use("/resource", resourceRoutes);
 
-app.get("/", authorization, (req, res) => {
-  res.render("viewresource");
-});
+// app.get("/", authorization, (req, res) => {
+//   res.render("viewresource");
+// });
 
 // app.get("/tracks-form", (req, res) => {
 //   res.render("index");
