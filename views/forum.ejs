@@ -9,17 +9,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/forumStyle.css">
+    <link rel="stylesheet" href="/css/nav_style.css">
+    <script src="https://kit.fontawesome.com/23068c81bc.js" crossorigin="anonymous"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;900&display=swap" rel="stylesheet">
+</head>
 </head>
 <body>
 
     <!--Navbar code copy paste-->
-    <%- include('partials/header') %>
+    <nav style="z-index: 1;">
+        <div class="icon">
+            <b>Study<br> Corner</b>
+            <div class="search_box">
+                <input type="search" placeholder="Search">
+                <span class="fa fa-search"></span>
+            </div>
+        </div>
+        
+        <ol class="abc_new">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Discussion</a></li>
+            <li><a href="#">About Us</a></li>
+            <img src="Resource\download (1).jpg">
+        </ol>
+    </nav>
 
-    <!--List container-->
+    <div class="abc_new1" style="
+    margin-top: 70px;
+">
+            <!--List container-->
     <div class="query-list">
 
         <!--Button-->
-        <a id="ask-btn" href="/forum/create">ASK YOUR QUESTION</a>
+        <div class="s_btn" style="
+        margin: 30px 0px;
+        margin-left: -25px;
+    ">
+            <a id="ask-btn" href="/forum/create">ASK YOUR QUESTION</a>
+        </div>
         
         <!--Forum List-->
         <ul>
@@ -64,15 +94,14 @@
     </div>
 
     <!--Search and Icon container-->
-    <div class="forum-search">
+    <div class="forum-search" style="width: 400px;" >
 
-        <div class="search-div">
+        <div class="search-div" style="margin-top: 10px;">
             <input type="text" name="search-query" id="search-query" placeholder="Search by query-tags">
             <i class="fas fa-search" id="search-icon"></i>
         </div>
-       
-        <img src="/images/query.png" alt="Image could not be fetched" id="search-img">
 
+    </div>
     </div>
     
     <%- include('partials/footer') %>
