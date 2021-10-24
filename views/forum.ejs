@@ -22,13 +22,26 @@
     <nav style="z-index: 1;">
         <div class="icon">
             <b>Study<br> Corner</b>
-            <div class="search_box">
-                <input type="search" placeholder="Search">
+            <!-- <div class="search_box">
+                <form action="/user/public-profile" method="GET" class="form-inline search_box"></form>
+                <input type="text" name="search" placeholder="Search for users" class="form-control"style="    padding: 0;
+                padding-left: 45px;
+                margin-top: 2px;">
                 <span class="fa fa-search"></span>
-            </div>
+            </form>
+            </div> -->
+            <form action="/user/public-profile" method="GET" class="form-inline search_box" style="margin-left: 20px;border:black; border-width: 2px; border-style: solid; width: 17vw;">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="user search..." class="form-control">
+                </div>
+            </form>
         </div>
         
-        <ol class="abc_new">
+        <ol class="abc_new" style="    margin: -17px 0px;
+        display: flex;
+        list-style: none;
+        align-items: center;
+        justify-content: flex-end;">
             <li><a href="#">Home</a></li>
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Discussion</a></li>
@@ -94,14 +107,14 @@
     </div>
 
     <!--Search and Icon container-->
-    <div class="forum-search" style="width: 400px;" >
+    <form class="forum-search" style="width: 400px;" action="/forum" method="GET">
 
         <div class="search-div" style="margin-top: 10px;">
-            <input type="text" name="search-query" id="search-query" placeholder="Search by query-tags">
+            <input type="text" name="search" id="search-query" placeholder="Search by query-tags">
             <i class="fas fa-search" id="search-icon"></i>
         </div>
 
-    </div>
+    </form>
     </div>
     
     <%- include('partials/footer') %>

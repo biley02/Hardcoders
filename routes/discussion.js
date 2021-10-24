@@ -63,8 +63,8 @@ router.get("/appreciate/:question_id", authorization, async (req, res) => {
     user.likes = likesArr;
     await question.save();
     await user.save();
-    console.log(likesArr);
-    console.log(question);
+    // console.log(likesArr);
+    // console.log(question);
     res.redirect(req.get("referer"));
   } catch (error) {
     console.log(error);
@@ -146,7 +146,6 @@ router.get("/view/:id", authorization, async (req, res) => {
 
 //answering to a question (adding comment to the question)
 router.post("/answer/:id", authorization, async (req, res) => {
-  console.log("hi");
   try {
     //find the corresponding question in db
     let slug = req.params.id;

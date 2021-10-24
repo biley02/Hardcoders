@@ -24,7 +24,6 @@ nav .icon{
     line-height: 1;
 }
 nav ol{
-    margin: -17px 190px;
     display: flex;
     list-style: none;
 }
