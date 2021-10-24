@@ -15,7 +15,9 @@
     <title>resources</title>
   </head>
   <body>
-    <div><%- include('partials/header') %></div>
+    <div class="pos">
+      <%- include('partials/header') %>
+    </div>
     <div class="widt">
 
     </div>
@@ -55,6 +57,7 @@
             </div>
             <%})%> 
     </div>
+    <br><br>
 </div>
 <br>
 <br>
@@ -85,11 +88,26 @@
     }
     .card{
     box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.3); 
-    margin-left:5vw;
+    margin-left:4vw;
     margin-top:5vh;
     height: auto;
     /* overflow: hidden; */
-    position: absolute;
     }
+    .container{
+      width:80%;
+    height: auto;
+      box-shadow:  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+      0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+      0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 10px 80px rgba(0, 0, 0, 0.12);
+  }
+  body {
+    margin: 0;
+  }
+  .pos{
+    position: fixed;
+  }
   </style>
 </html>
