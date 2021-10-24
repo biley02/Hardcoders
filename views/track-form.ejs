@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/track-form.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <form action="action_page.php">
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Title</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="fname" name="Title" placeholder="Title..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Author</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="lname" name="Author" placeholder="Author name..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">Tracks</label>
+                </div>
+                <div class="col-75">
+                     
+                  <div class="form-group" id="parent_div">       
+                    <div class="row form-group" id="child_div">   
+                        <label for="day" class="col-xs-2 control-label"></label>
+                        <div class="col-xs-12 col-lg-3">
+                           <label for="form-input-col-xs-2" class="wb-inv">Title</label>
+                           <div class="input-group">
+                            <input type="text" id="lname" name="Author" placeholder="Author name..">
+                            </div>  
+                        </div>
+                        <div class="col-xs-12 col-lg-3" >
+                           <label for="form-input-col-xs-3" class="wb-inv">Description</label>
+                           <div class="input-group" >
+                            <input type="text" id="lname" name="Author" placeholder="Author name..">
+                           </div>
+                        </div>
+                       <div class="col-xs-12 col-lg-3">
+                          <label for="form-input-col-xs-4" class="wb-inv">Resources</label>
+                          <div class="input-group" >
+                            <input type="text" id="lname" name="Author" placeholder="Author name..">        
+                          </div>              
+                       </div> 
+                    </div>  
+                </div>
+                <label for="day" class="col-xs-2 control-label"></label>
+                <input class="btn btn-success " type="button" id="create_button" value="+" />
+
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">Visibility</label>
+                </div>
+                <div class="col-75">
+                  
+                    <input type="checkbox" id="Private" name="Private" value="Private">
+                    <label for="vehicle1"> Private</label><br>
+                    <input type="checkbox" id="Public" name="Public" value="Public">
+                    <label for="vehicle2"> Public</label><br>
+              
+                </div>
+              </div>
+              <div class="row">
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+          </div>
+    </main>
+</body>
+<script>
+
+  document.getElementById("create_button").onclick = function (){
+  var temp = document.getElementById("child_div").outerHTML;
+  document.getElementById("parent_div").innerHTML = document.getElementById("parent_div").innerHTML + temp;
+  }
+  
+  </script>
+  <style>
+    .form-group{
+      margin-left: -6.7vw;
+    }
+    .btn-success{
+      margin-left:45vw;
+      margin-top:-15vh;
+      height:7vh;
+      width: 3vw;
+    }
+  </style>
+</html>
