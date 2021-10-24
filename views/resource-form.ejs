@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/resource-form.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <form action="action_page.php">
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Title</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="Title" name="Title" placeholder="Title..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Author</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="Author" name="Author" placeholder="Author..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Body</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="Body" name="Body" placeholder="Body..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">Tags</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="Tags" name="Tags" placeholder="Tags...">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">Urls</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="Tags" name="Tags" placeholder="#Tags...">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">Image</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="Image" name="Image" placeholder="Image Url...">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">Likes And Dislikes</label>
+                </div>
+                <div class="col-75">
+                    <input type="button" id="Likes" name="Likes" value="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    <input type="button" id="Dislikes" name="Dislikes" value="Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                    
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">Comments</label>
+                </div>
+                <div class="col-75">
+                  <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+          </div>
+    </main>
+</body>
+<style>
+ #Likes,#Dislikes{
+  width: 6vw;
+  height: 4vh;
+}
+#Dislikes{
+  margin-left: 2vw;
+}
+.fa{
+
+  margin-left: -1.2vw;
+}
+</style>
+</html>
