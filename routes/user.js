@@ -31,38 +31,27 @@ router.get("/signup", async (req, res) => {
 
 router.post("/signup", async (req, res) => {
   try {
-    const password = req.body.password;
-    const cpassword = req.body.confirmpassword;
-    const userExists = await User.findOne({ email: req.body.email });
-    if (userExists) {
-      console.log("Email already registered");
-      res.redirect("/user/signup");
-      return;
-    }
-    if (password == cpassword) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      console.log(hashedPassword);
-      const newUser = new User({
-        email: req.body.email,
-        name: req.body.name,
-        password: hashedPassword,
-        active: true,
-      });
-      console.log(newUser);
-      const newuser = await newUser.save();
-      if (!newUser) {
-        console.log("Unable to signup");
-        res.redirect("/user/signup");
-        return;
-      }
-      console.log("user registered");
-      res.redirect("/user/login");
-    } else {
-      console.log("password not matching");
-    }
+    const { email, password, name } = req.body;
+
+    let user = await User.findOne({ email });
+    if (user) return res.status(400).json({ error: "Email already exists" });
+
+    user = await User.findOne({ name });
+    if (user) return res.status(400).send({ error: "Username already exists" });
+
+    user = new User({
+      email: email,
+      password: password,
+      name: name,
+    });
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+    await user.save();
+
+    console.log("user registered");
+    res.redirect("/user/login");
   } catch (error) {
-    console.log(error);
-    res.status(400).send(error);
+    res.status(500).json({ error });
   }
 });
 
@@ -160,7 +149,7 @@ router.get("/profile", authorization, async (req, res) => {
     let user = await User.findById(req.user.userId);
     await user.populate("tracks");
     await user.populate("notes");
-    console.log(user);
+    // console.log(user);
     res.render("profile", {
       user: user,
       found: finduser,
@@ -187,7 +176,10 @@ router.post("/edit-profile/:id", authorization, async (req, res) => {
     description: req.body.description,
     goals: req.body.goals,
     location: req.body.location,
-    skills: req.body.skills,
+    skill1: req.body.skill1,
+    skill2: req.body.skill2,
+    skill3: req.body.skill3,
+    img: req.body.img,
   });
   await saved.save();
   // console.log(saved);
