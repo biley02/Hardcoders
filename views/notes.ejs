@@ -13,8 +13,8 @@
 <body>
   <%- include('partials/header') %>
     <main>
-        <section class="container">
-            <h2>My Notes</h2>
+        <section class="container" style="margin-top:60px ;">
+            <h2 style="margin: 10px 0;">My Notes</h2>
             <div class="accordion">
               <% user.notes.forEach(function(note){%>
                 <div class="each_note">
@@ -28,18 +28,21 @@
                   </div>
                 </div>
                 <% }) %>
-                <!-- <div class="each_note">
+                <div class="each_note">
                   <input type="radio" name="example_accordion" id="section2" class="accordion__input">
                   <label for="section2" class="accordion__label">Section #2</label>
-                  <div class="accordion__content">
-                    <p>Section #2</p>
-                    <p>
+                  <div class="">
+                    <p style="font-size: 16px;
+                    padding: 10px 20px;
+                    font-weight: 300;
+                    color: white;
+                    line-height: 1.5;">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam sit reiciendis, ipsam quaerat,
                       aperiam perspiciatis ad ullam architecto impedit natus illo nostrum molestias voluptas earum a
                       voluptatibus fugiat fuga facere!
                     </p>
                   </div>
-                </div> -->
+                </div>
                 <!-- <div class="each_note">
                   <input type="radio" name="example_accordion" id="section3" class="accordion__input">
                   <label for="section3" class="accordion__label">Section #3</label>
