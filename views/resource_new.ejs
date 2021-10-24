@@ -19,9 +19,11 @@
       <%- include('partials/header') %>
     </div>
     <div class="widt">
-
+   
     </div>
-<div class="container">
+<div class="container"> 
+  <a href="/resource/create" class="btn card-link" id="crt">Continue</a>
+              
     <div class="row">
         <!-- <% resources.forEach(function(resource){%>
         <div class="col-4">
@@ -48,7 +50,7 @@
                 <p class="card-text"><%=resource.body.substring(0, 20)%>...</p>
                 <div class="bottomButtons">
                   <a href="#" class="card-link vote"><i class="fas fa-thumbs-up"></i></a>
-                  <a href="#" class="card-link vote"><i class="fas fa-thumbs-down"></i></a>
+                  
                   <a href="/resource/view/<%=resource._id%>" class="btn card-link" id="continue">Continue</a>
               
                 </div>         
@@ -64,6 +66,16 @@
 <%- include('partials/footer') %>
   </body>
   <style>
+    #crt{
+      margin-top: 7vh;
+      width: 10vw;
+      height: 6vh;
+      font-weight: bold;
+      text-align: center;
+      color:white;
+      background-color:rgb(46, 90, 173);
+      margin-left: 60vw;
+    }
     .card-title{
       font-size: 1em;
     }
