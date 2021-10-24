@@ -174,7 +174,7 @@ router.get("/edit-profile", authorization, async (req, res) => {
 
 router.post("/edit-profile/:id", authorization, async (req, res) => {
   let id = req.params.id;
-  console.log(req.body);
+  // console.log(req.body);
   const saved = await User.findByIdAndUpdate(id, {
     description: req.body.description,
     goals: req.body.goals,
