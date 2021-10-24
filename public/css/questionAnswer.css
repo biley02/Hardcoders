@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
 * {
@@ -11,11 +11,12 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .main {
     margin: 0 auto;
     width: 80vw;
+    margin-top: 50px;
 }
 
 #heading {
@@ -35,12 +36,14 @@ form {
 }
 
 label {
-    font-size: 1rem;
+    margin: 7px;
+    font-size: 18px;
 }
 
 textarea {
     height: 15rem;
-    border-radius: 1rem;
+    border-radius: 6px;
+    width: 600px;
     border: 1px solid grey;
     padding: 1rem;
     resize: none;
@@ -57,11 +60,13 @@ textarea {
 
 #submit {
     width: 8rem;
-    margin-top: 2rem;
-    font-size: 1.7rem;
-    border-radius: 0.5rem;
+    margin: 5px;
+    margin-top: 18px;
+    font-size: 20px;
+    border-radius: 5px;
     border: none;
     padding: 0.5rem;
     color: white;
-    background-color: black;
+    background: linear-gradient(
+45deg,#D1CEFC,#746AF9);
 }

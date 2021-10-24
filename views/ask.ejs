@@ -5,19 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Doubt</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="/css/questionAnswer.css">
+    <link rel="stylesheet" href="/css/nav_style.css">
 </head>
 <body>
 
     <!--Navbar code copy paste-->
-    <%- include('partials/header') %>
+    <nav>
+        <div class="icon">
+            <b style="
+            margin-top: 2px;
+        ">Study<br> Corner</b>
+            <!-- <form class="search_box" class="form-inline" action="/user/public-profile" method="GET">
+                <input type="search" placeholder="Search for users...">
+                <span class="fa fa-search" style="margin-left:-3vw; border: none;"></span>
+            </form> -->
+            <form action="/user/public-profile" method="GET" class="form-inline search_box">
+              <div class="form-group" style="
+              margin-left: 280px;
+          ">
+                  <input type="text" name="search" placeholder="user search..." class="form-control">
+                  <span class="fa fa-search" style="margin-left:-3vw; border: none;"></span>
+              </div>
+          </form>
+        </div>
+        
+        <ol>
+            <li><a href="">Home</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Discussion</a></li>
+            <li><a href="">About Us</a></li>
+            <img src="/img/images.jpg">
+        </ol>
+     </nav>
 
     <div id="heading">Ask a Question<div>
 
-    <div class="main">
+    <div class="main" >
         <form action="/forum/create" method="POST">
             <label for="title">QUESTION </label>
             <textarea name="title" id="title" cols="30" rows="2" placeholder="Enter your question here" required></textarea>
