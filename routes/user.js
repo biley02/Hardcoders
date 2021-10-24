@@ -39,10 +39,20 @@ router.post("/signup", async (req, res) => {
     user = await User.findOne({ name });
     if (user) return res.status(400).send({ error: "Username already exists" });
 
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = mm + "/" + dd + "/" + yyyy;
+    var cover =
+      "https://www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png";
     user = new User({
       email: email,
       password: password,
       name: name,
+      date: today,
+      img: cover,
     });
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
@@ -194,14 +204,17 @@ router.get("/public-profile", authorization, async (req, res) => {
       let searchedUser = await User.find({
         name: regex,
       });
-      console.log(searchedUser);
-      if (searchedUser) {
+      // console.log(searchedUser);
+      if (searchedUser.length > 0) {
         //   res.render("public-profile", {
         //     searchedUser,
         //     user,
         //     found: finduser,
         //   });
-        res.send(searchedUser);
+        // res.send(searchedUser);
+        res.render("public-profile", {
+          users: searchedUser,
+        });
       } else {
         res.send("NO user found");
       }
