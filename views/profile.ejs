@@ -14,7 +14,7 @@
 <body>
     <%- include('partials/header') %>
     <main>
-        <h2 class="main_points" style="margin-bottom: 10px;">My Profile</h2>
+        <h2 class="main_points" style="margin-bottom: 10px;margin-top: 90px;">My Profile</h2>
         <section class="container">
             <div class="left">
                 <div class="user">
@@ -24,7 +24,7 @@
                     <h2 class="main_points"><%=user.name%></h2>
                     <h4 class="sub_points"><i class="fas fa-map-marker-alt"></i> <%=user.location%></h4>
                     <h4 class="sub_points"><%=user.email%></h4>
-                    <h4 class="sub_points"><%=user.description%></h4>
+                    <h4 class="sub_points">Description : <%=user.description%></h4>
                     <div style="margin: 5px 0px;">
                         <a class="edit_profile" style="background-color: #ECECFD;" href="/user/edit-profile">Edit Profile</a>
                     </div>
@@ -83,17 +83,22 @@
                                 <h4><i class="fas fa-thumbtack personal"></i>TRACKS</h4>
 
                             </div>
-                            <div style="margin: 15px 18px;flex: 1;">
-                                <a class="edit_profile" style="margin-left:50px" href="/user/add-track">Add</a>
+                            <div style="margin: 15px 0px;">
+                                <a class="edit_profile" style="margin-left: 0;" href="/user/add-track">Add</a>
                             </div>
-                            <div style="margin: 15px 18px;flex: 1;">
-                                <a class="edit_profile" style="margin-left:50px" href="/user/tracks">View</a>
+                            <div style="margin: 15px 15px 15px 0px;flex: 1;">
+                                <a class="edit_profile" style="margin-left:30px" href="/user/tracks">View</a>
                             </div>
                             
                         </div>
                         <div class="card" style="height: 60px;border-radius: 3px;">
                             
-                            <h4><i class="fas fa-clipboard personal"></i><a href="/user/notes">NOTEBOOK</a></h4>
+                            <h4><i class="fas fa-clipboard personal"></i><button href="/user/notes" style="
+                                background: #f5f5ff;
+                                border: 0;
+                                font-weight: bold;
+                                font-size: 16px;
+                            ">NOTEBOOK</button></h4>
                             
                         
                         </div>
@@ -105,6 +110,5 @@
             </div>
         </section>
     </main>
-    <%- include('partials/footer') %>
 </body>
 </html>
