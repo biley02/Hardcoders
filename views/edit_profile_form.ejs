@@ -13,39 +13,42 @@
             <div class="title">
                 Edit Profile
             </div>
-            <div class="user_details">
-                <div class="left">
-                    <div class="description input-box">
-                        <h4 class="subheading">Description</h4>
-                        <input type="text" placeholder="">
+            <form action="/user/edit-profile/<%=user._id%>?_method=PUT" method="POST" >
+                <div class="user_details">
+                    <div class="left">
+                        <div class="description input-box">
+                            <h4 class="subheading">Description</h4>
+                            <input type="text" name="description" value="<%=user.description%>">
+                        </div>
+                        <div class="goals input-box">
+                            <h4 class="subheading">Your Goals</h4>
+                            <input type="text" name="goals" value="<%=user.goals%>">
+                        </div>
+                        <div class="YourLocation input-box">
+                            <h4 class="subheading">Your Location</h4>
+                            <input type="text" name="location" value="<%=user.location%>">
+                        </div>
                     </div>
-                    <div class="goals input-box">
-                        <h4 class="subheading">Your Goals</h4>
-                        <input type="text" placeholder="">
-                    </div>
-                    <div class="YourLocation input-box">
-                        <h4 class="subheading">Your Location</h4>
-                        <input type="text" placeholder="">
-                    </div>
-                </div>
-
-                <div class="right">
-                    <div class="add_skills input-box">
-                        <h4 class="subheading">Top 3 skills</h4>
-                        <div class="skills">
-                            <input  style="height: 40px;margin-bottom: 5px;" type="text" placeholder="">
-                            <input class="skill_input" style="height: 40px;" type="text" placeholder="">
-                            <input class="skill_input" style="height: 40px;" type="text" placeholder="">
+    
+                    <div class="right">
+                        <div class="add_skills input-box">
+                            <h4 class="subheading">Top 3 skills</h4>
+                            <div class="skills">
+                                <input  style="height: 40px;margin-bottom: 5px;" type="text" name="skill1" value="<%=user.skill1%>">
+                                <input class="skill_input" style="height: 40px;" type="text" name="skill2" value=" <%=user.skill2%>">
+                                <input class="skill_input" style="height: 40px;" type="text" name="skill3" value=" <%=user.skill3%>">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- <div class="button>
-                <input  type="submit" value="Register">
-            </div> -->
-
-            <button style="width: 100%;height: 45px;background: linear-gradient(45deg,#bcb7ff,#D1CEFC);border: 0px;"><span class="subheading" style="font-family: 'Poppins';">Registration</span></button>
+    
+                <!-- <div class="button>
+                    <input  type="submit" value="Register">
+                </div> -->
+    
+                <button style="width: 100%;height: 45px;background: linear-gradient(45deg,#bcb7ff,#D1CEFC);border: 0px;" type="submit"><span class="subheading" style="font-family: 'Poppins';">Edit profile</span></button>
+            </form>
+            
 
         </div>
     </main>

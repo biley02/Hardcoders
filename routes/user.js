@@ -47,7 +47,6 @@ router.post("/signup", async (req, res) => {
         name: req.body.name,
         password: hashedPassword,
         active: true,
-        handle: req.body.handle,
       });
 
       const newuser = await newUser.save();
@@ -153,8 +152,9 @@ router.get("/profile", authorization, async (req, res) => {
     let user = await User.findById(req.user.userId);
     await user.populate("tracks");
     await user.populate("notes");
+    console.log(user);
     res.render("profile", {
-      user: req.user,
+      user: user,
       found: finduser,
     });
   } catch (error) {
@@ -164,7 +164,29 @@ router.get("/profile", authorization, async (req, res) => {
   }
 });
 
-router.get("/public-profile/:handle", async (req, res) => {
+router.get("/edit-profile", authorization, async (req, res) => {
+  let user = req.user;
+  const founduser = await User.findOne({ email: user.email });
+  res.render("edit_profile_form", {
+    user: founduser,
+  });
+});
+
+router.post("/edit-profile/:id", authorization, async (req, res) => {
+  let id = req.params.id;
+  console.log(req.body);
+  const saved = await User.findByIdAndUpdate(id, {
+    description: req.body.description,
+    goals: req.body.goals,
+    location: req.body.location,
+    skills: req.body.skills,
+  });
+  await saved.save();
+  // console.log(saved);
+  res.redirect("/user/profile");
+});
+
+router.get("/public-profile/:name", async (req, res) => {
   try {
     // const token = req.cookies.authorization;
     const finduser = await User.find({ active: true }, null, {
@@ -179,7 +201,7 @@ router.get("/public-profile/:handle", async (req, res) => {
       if (decodedData) user = await User.findById(decodedData.userId);
     }
     let searchedUser = await User.findOne({
-      handle: req.params.handle,
+      name: req.params.name,
     });
     console.log(searchedUser);
     await searchedUser.populate("tracks");

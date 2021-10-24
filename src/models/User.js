@@ -24,19 +24,15 @@ const userSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  skills: [
-    {
-      title: String,
-      precent: Number,
-    },
-  ],
-  goal: [
-    {
-      title: String,
-      finished: Number,
-      exam: String,
-    },
-  ],
+  location: {
+    type: String,
+  },
+  skill1: String,
+  skill2: String,
+  skill3: String,
+  goals: {
+    type: String,
+  },
   friends: [
     {
       type: ObjectId,
