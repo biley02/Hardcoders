@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
         likes: -1,
       })
       .populate("author");
-    console.log(resources);
+    // console.log(resources);
     res.render("resource_new", {
       resources: resources,
     });
@@ -34,9 +34,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/create", authorization, async (req, res) => {
+  res.render("resource-form");
+});
+
 router.post("/create", authorization, async (req, res) => {
-  var cover =
-    "https://cdn-images-1.medium.com/max/800/1*fDv4ftmFy4VkJmMR7VQmEA.png";
   try {
     let user = await User.findById(req.user.userId);
     if (!user) {
@@ -46,6 +48,11 @@ router.post("/create", authorization, async (req, res) => {
 
     if (!resource) {
       req.send("Something went wrong");
+    }
+    var cover =
+      "https://media.istockphoto.com/photos/resources-word-in-wooden-cube-picture-id1181567551?b=1&k=20&m=1181567551&s=170667a&w=0&h=hDkDBsuIBvmtntgf3oR_j_nH5PWIM0ntICb4MnrueF4=";
+    if (req.body.cover) {
+      cover = req.cover;
     }
     const saved = await new Resource({
       title: resource.title,

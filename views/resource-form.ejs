@@ -12,29 +12,29 @@
 <body>
     <main>
         <div class="container">
-            <form action="action_page.php">
+            <form action="/resource/create" method="POST">
               <div class="row">
                 <div class="col-25">
                   <label for="fname">Title</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" id="Title" name="Title" placeholder="Title..">
+                  <input type="text" id="Title" name="title" placeholder="Title..">
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-25">
                   <label for="fname">Author</label>
                 </div>
                 <div class="col-75">
                   <input type="text" id="Author" name="Author" placeholder="Author..">
                 </div>
-              </div>
+              </div> -->
               <div class="row">
                 <div class="col-25">
                   <label for="lname">Body</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" id="Body" name="Body" placeholder="Body..">
+                  <input type="text" id="Body" name="body" placeholder="Body..">
                 </div>
               </div>
               <div class="row">
@@ -42,26 +42,34 @@
                   <label for="country">Tags</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="Tags" name="Tags" placeholder="Tags...">
+                    <input type="text" id="Tags" name="tags" placeholder="Tags...">
                 </div>
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="country">Urls</label>
+                  <label for="country">Category</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="Tags" name="Tags" placeholder="#Tags...">
+                    <input type="text" id="Tags" name="category" placeholder="Category...">
                 </div>
               </div>
               <div class="row">
                 <div class="col-25">
-                  <label for="country">Image</label>
+                  <label for="country">Resource URL</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="Image" name="Image" placeholder="Image Url...">
+                    <input type="text" id="Tags" name="url" placeholder="Enter url...">
                 </div>
               </div>
               <div class="row">
+                <div class="col-25">
+                  <label for="country">Image URL</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="Image" name="img" placeholder="Image Url...">
+                </div>
+              </div>
+              <!-- <div class="row">
                 <div class="col-25">
                   <label for="country">Likes And Dislikes</label>
                 </div>
@@ -70,15 +78,15 @@
                     <input type="button" id="Dislikes" name="Dislikes" value="Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
                     
                 </div>
-              </div>
-              <div class="row">
+              </div> -->
+              <!-- <div class="row">
                 <div class="col-25">
                   <label for="subject">Comments</label>
                 </div>
                 <div class="col-75">
                   <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
                 </div>
-              </div>
+              </div> -->
               <div class="row">
                 <input type="submit" value="Submit">
               </div>
