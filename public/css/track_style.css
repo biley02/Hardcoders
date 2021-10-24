@@ -11,7 +11,7 @@
   .body_container{
     margin: 20px 20px;
     padding: 8px;
-    background-color: rgb(232, 244, 255);
+    background-color: #efeeff;
     border-radius: 10px;
   }
   .f_track h2{
@@ -99,7 +99,10 @@
     z-index: 1;
     transition: 0.5s;
   }
-  
+  a{
+    text-decoration: none;
+    color: black;
+  }
   .card .box .content a{
     position: absolute;
     top: 130px;
@@ -142,8 +145,8 @@
       font-size: 14px;
       border-radius: 20px;
       height: 30px;
-      box-shadow: 1px 2px 3px #bfbfbfe3;
-      background: linear-gradient(45deg,rgb(232 244 255),white);
+      box-shadow: 1px 2px 3px #b1adf8;
+      background: linear-gradient(45deg,#d6d4fc,#e9e8fc);
       display: flex;
       align-content: space-around;
       flex-wrap: nowrap;
