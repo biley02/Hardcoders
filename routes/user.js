@@ -24,7 +24,8 @@ router.get("/signup", async (req, res) => {
       if (err) console.log(err);
       else req.user = user;
       // console.log(user);
-      res.render("signup", { user: user, found: finduser });
+      // res.render("signup", { user: user, found: finduser });
+      res.redirect("/user/profile");
     });
   } else res.render("signup", { user: req.user, found: finduser });
 });
