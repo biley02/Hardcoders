@@ -1,0 +1,155 @@
+
+* {box-sizing:border-box}
+.commnts input{
+    border-style: groove;
+    border: 2px solid lightgray;
+    background-color: white;
+    outline: none;
+}
+.bio{text-align: center;
+  color: white;
+}
+.suggestion{
+  padding: 60px;
+}
+.suggestion h3{
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(3, 104, 107);
+}
+
+
+.comment{
+  
+  color:lightgray;
+  font-weight: bold;
+}
+.cont{
+ width: 100%;
+ height: auto;
+}
+.container-2{
+width:80%;
+height: auto;
+margin-left: 10%;
+background-color: rgb(173,216,230);
+box-shadow:  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                        0 12.5px 10px rgba(0, 0, 0, 0.06),
+                        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                        0 10px 80px rgba(0, 0, 0, 0.12);
+}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 75vw;
+  position: relative;
+  margin: auto;
+  padding-top: 6%;
+
+} 
+
+.mySlides {display: none}
+
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -1px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 5px 5px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.9);
+  color: white;
+  text-decoration: none;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 4;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 3vh;
+  width: 1.5vw;
+  margin: 0 2px;
+  background-color: #B0B0B0;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #606060;
+}
+
+/* Fading animation */
+.fade {
+  
+  animation-name: fade;
+  animation-duration: 1115.5s;
+}
+
+
+@keyframes fade {
+  from {opacity: .9} 
+  to {opacity: 1.2}
+}
+
+
+.slider-img{
+	
+    background-color: white;
+    height: 75vh;
+    width: 100vw;
+}
+.slide{
+	height: 50vh;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+   border: 1px solid #dbd8e3 ;
+   background-color: #eff7e1;
+   }
+   ::placeholder {
+    color: darkgray;
+    font-style: normal;
+    font-size: 12px;
+}

@@ -66,8 +66,9 @@ app.use("/forum", discussionRoutes);
 app.use("/resource", resourceRoutes);
 
 app.get("/", authorization, (req, res) => {
-  res.render("index");
+  res.render("viewresource");
 });
+
 app.listen(port, () => {
   console.log(`server is running at port ${port}`);
 });
