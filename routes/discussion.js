@@ -136,7 +136,7 @@ router.get("/view/:id", authorization, async (req, res) => {
     await question.populate("tags");
 
     //render result page
-    res.render("questionDescription", {
+    res.render("questiondesc", {
       question: question,
     });
   } catch (e) {

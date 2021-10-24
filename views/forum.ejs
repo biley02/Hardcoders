@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="/css/nav_style.css">
     <script src="https://kit.fontawesome.com/23068c81bc.js" crossorigin="anonymous"></script> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="script.js"></script> 
 </head>
 </head>
 <body>
@@ -22,7 +23,7 @@
     <nav style="z-index: 1;">
         <div class="icon">
             <b>Study<br> Corner</b>
-            <!-- <div class="search_box">
+            <!-- 
                 <form action="/user/public-profile" method="GET" class="form-inline search_box"></form>
                 <input type="text" name="search" placeholder="Search for users" class="form-control"style="    padding: 0;
                 padding-left: 45px;
@@ -30,11 +31,12 @@
                 <span class="fa fa-search"></span>
             </form>
             </div> -->
-            <form action="/user/public-profile" method="GET" class="form-inline search_box" style="margin-left: 20px;border:black; border-width: 2px; border-style: solid; width: 17vw;">
-                <div class="form-group">
-                    <input type="text" name="search" placeholder="user search..." class="form-control">
+            <form action="/user/public-profile" method="GET" class="form-inline search_box" style="margin-left:30px; ">
+                <div class="form-group" style="margin-top:-2vh;">
+                    <input type="text" name="search" placeholder="user search..." class="form-control" style="border:2px solid lightgray;width: 16vw;">
                 </div>
             </form>
+            
         </div>
         
         <ol class="abc_new" style="    margin: -17px 0px;
@@ -42,16 +44,16 @@
         list-style: none;
         align-items: center;
         justify-content: flex-end;">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Discussion</a></li>
-            <li><a href="#">About Us</a></li>
-            <img src="Resource\download (1).jpg">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resource">Resource</a></li>
+            <li><a href="/forum">Discussion</a></li>
+            <li><a href="/user/signup">Sign Up</a></li>
+            <img class="img"src="/img/images.jpg">
         </ol>
     </nav>
 
     <div class="abc_new1" style="
-    margin-top: 70px;
+    margin-top: 150px;
 ">
             <!--List container-->
     <div class="query-list">
@@ -118,8 +120,6 @@
     </div>
     
     <%- include('partials/footer') %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script> 
+   
 </body>
 </html>

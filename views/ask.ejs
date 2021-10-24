@@ -9,43 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="/css/questionAnswer.css">
-    <link rel="stylesheet" href="/css/nav_style.css">
+    <!-- <link rel="stylesheet" href="/css/nav_style.css"> -->
 </head>
 <body>
 
     <!--Navbar code copy paste-->
-    <nav>
-        <div class="icon">
-            <b style="
-            margin-top: 2px;
-        ">Study<br> Corner</b>
-            <!-- <form class="search_box" class="form-inline" action="/user/public-profile" method="GET">
-                <input type="search" placeholder="Search for users...">
-                <span class="fa fa-search" style="margin-left:-3vw; border: none;"></span>
-            </form> -->
-            <form action="/user/public-profile" method="GET" class="form-inline search_box">
-              <div class="form-group" style="
-              margin-left: 280px;
-          ">
-                  <input type="text" name="search" placeholder="user search..." class="form-control">
-                  <span class="fa fa-search" style="margin-left:-3vw; border: none;"></span>
-              </div>
-          </form>
-        </div>
-        
-        <ol>
-            <li><a href="/">Home</a></li>
-            <li><a href="/resource">Resource</a></li>
-            <li><a href="/forum">Discussion</a></li>
-            <li><a href="/user/signup">Sign Up</a></li>
-            <a href="/user/profile"><img src="/img/images.jpg"></a>
-        </ol>
-     </nav>
-
-    <div id="heading">Ask a Question<div>
+      <div class="pos">
+        <%- include('partials/header') %>
+      </div>
+      <div class="widt">
+          </div>
+    <div id="heading">Ask a Question</div>
 
     <div class="main" >
-        <form action="/forum/create" method="POST">
+        <form id="frm" action="/forum/create" method="POST">
             <label for="title">QUESTION </label>
             <textarea name="title" id="title" cols="30" rows="2" placeholder="Enter your question here" required></textarea>
             <label for="title">DESCRIPTION </label>
@@ -58,10 +35,18 @@
     </div>
 
     <%- include('partials/footer') %>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="script.js"></script> 
+    <script src="script.js"></script>  -->
 
     
 </body>
+<style>
+    .widt{
+      height:25vh;
+    }
+  .pos{
+    position: fixed;
+  }
+</style>
 </html>
